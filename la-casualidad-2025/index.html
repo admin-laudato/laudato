@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asamblea Estancia La Casualidad 2025 — Laudato Administración</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g1:#2d5a1e;--g2:#4c7a37;--g3:#305c31;--bl:#8ca5af;--bg:#f7f9f5;--border:#d8e8c8;--txt:#1a2a10;--muted:#6a8060;--am:#b07828;--gl:#a8c888}
+html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#eef2ea}
+.pres{max-width:960px;margin:0 auto}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:12px}
+.logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-txt .l1{font-size:11px;font-weight:700;color:var(--g1);letter-spacing:.8px}
+.logo-txt .l2{font-size:9px;color:var(--muted)}
+.dots{display:flex;gap:5px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+.dot.on{background:var(--g1);transform:scale(1.35)}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.nbt{padding:5px 14px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--g1);font-size:12px;cursor:pointer;font-family:inherit}
+.nbt:hover{background:var(--bg)}
+.ctr{font-size:11px;color:var(--muted);white-space:nowrap}
+.slide{display:none;min-height:520px;background:#fff}
+.slide.on{display:block}
+.shd{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:2px solid var(--border)}
+.barrio{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase}
+.sbody{padding:26px 34px}
+.stitle{font-size:17px;font-weight:600;color:var(--g1);margin-bottom:20px}
+.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:460px;text-align:center;background:linear-gradient(150deg,#f5f9f2 0%,#e8f2de 100%)}
+.cv-yr{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.cv-t{font-size:36px;font-weight:300;color:var(--g1);margin-bottom:6px}
+.cv-s{font-size:18px;color:var(--g2);margin-bottom:24px}
+.cv-div{width:50px;height:2px;background:var(--g2);margin:0 auto 24px}
+.cv-w{font-size:13px;color:var(--muted);font-weight:300}
+.olist{list-style:none}
+.oi{display:flex;align-items:flex-start;gap:14px;padding:11px 0;border-bottom:1px solid var(--bg);font-size:13.5px;color:var(--txt)}
+.oi:last-child{border-bottom:none}
+.onum{min-width:26px;height:26px;background:var(--g1);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.kpi{background:var(--bg);border-radius:8px;padding:13px 14px;border-left:3px solid var(--g2)}
+.kpi .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:5px}
+.kpi .val{font-size:17px;font-weight:700;color:var(--g1)}
+.kpi .sub{font-size:10px;color:var(--muted);margin-top:2px}
+.good{color:#2a6a2a!important}
+.chart-t{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:10px}
+.cw{position:relative;width:100%}
+.note{font-size:11px;color:var(--muted);margin-top:10px;font-style:italic;line-height:1.55}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.ld{width:10px;height:10px;border-radius:2px}
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.ii{display:flex;gap:9px;align-items:flex-start;padding:9px 11px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--txt)}
+.inum{font-weight:700;color:var(--g2);min-width:20px;font-size:11px}
+.vbox{border:1.5px solid var(--border);border-radius:12px;padding:26px 30px;max-width:580px;margin:24px auto 0}
+.vtitle{font-size:20px;font-weight:600;color:var(--g1);margin-bottom:18px;text-align:center}
+.vrow{padding:12px 0;border-bottom:1px solid var(--bg)}
+.vrow:last-child{border-bottom:none}
+.vq{font-size:13px;color:var(--txt);margin-bottom:10px;display:flex;gap:10px}
+.vletter{font-weight:700;color:var(--g2);min-width:18px}
+.vbtns{display:flex;gap:10px;margin-left:28px}
+.vbtn{padding:7px 22px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-family:inherit;cursor:pointer;transition:all .15s;color:var(--txt);font-weight:500}
+.vbtn.yes{background:var(--g1);color:#fff;border-color:var(--g1)}
+.vbtn.no{background:#a03030;color:#fff;border-color:#a03030}
+.vbtn.abs{background:#6a7a5a;color:#fff;border-color:#6a7a5a}
+.vresult{margin-left:28px;margin-top:8px}
+.vbar-wrap{background:#eee;border-radius:4px;height:6px;margin:4px 0;overflow:hidden}
+.vbar-yes{background:var(--g2);height:100%;border-radius:4px;transition:width .4s}
+.vcounts{display:flex;gap:16px}
+.vc-s{display:flex;align-items:center;gap:4px}
+.vc-dot{width:8px;height:8px;border-radius:50%}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="logo" viewBox="0 0 310 230">
+    <polygon points="15.5,209 39.5,209 126,59.2 114,38.4" fill="#8ca5af"/>
+    <polygon points="51.5,209 75.5,209 144,90.4 132,69.6" fill="#8ca5af"/>
+    <polygon points="138,59.2 162,59.2 210.4,143 186.4,143" fill="#4c7a37"/>
+    <polygon points="149.6,17 173.6,17 246.4,143 222.4,143" fill="#4c7a37"/>
+    <polygon points="118.7,155 106.6,176 295.4,176 283.3,155" fill="#305c31"/>
+    <polygon points="99.6,188 87.5,209 284.5,209 272.4,188" fill="#305c31"/>
+  </symbol>
+</svg>
+<div class="pres">
+<nav class="nav">
+  <div class="logo-wrap"><svg width="44" height="33" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+  <div class="dots" id="dots"></div>
+  <div class="nav-btns">
+    <span class="ctr" id="ctr">1 / 9</span>
+    <button class="nbt" onclick="go(-1)">← Ant.</button>
+    <button class="nbt" onclick="go(1)">Sig. →</button>
+  </div>
+</nav>
+
+<!-- S1 PORTADA -->
+<div class="slide on" id="s1">
+  <div class="shd"><div></div><div class="barrio">Estancia La Casualidad</div></div>
+  <div class="cover">
+    <svg width="90" height="68" viewBox="0 0 310 230" style="margin-bottom:18px"><use href="#logo"/></svg>
+    <div class="cv-yr">Asamblea Ordinaria</div>
+    <div class="cv-t">La Casualidad</div>
+    <div class="cv-s">Rendición de Cuentas 2025</div>
+    <div class="cv-div"></div>
+    <div class="cv-w">Bienvenidos</div>
+  </div>
+</div>
+
+<!-- S2 ORDEN -->
+<div class="slide" id="s2">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody">
+    <div class="stitle">Orden del día</div>
+    <ol class="olist"><li class="oi"><span class="onum">1</span><span>Constitución legal de la Asamblea</span></li>
+<li class="oi"><span class="onum">2</span><span>Designación de dos copropietarios para firmar el Acta</span></li>
+<li class="oi"><span class="onum">3</span><span>Designación del Presidente de la Asamblea</span></li>
+<li class="oi"><span class="onum">4</span><span>Aprobación de la Gestión y rendición de cuentas período 2025</span></li>
+<li class="oi"><span class="onum">5</span><span>Estado de Juicios y/o Morosidad</span></li>
+<li class="oi"><span class="onum">6</span><span>Aprobación de la continuidad de la Administración</span></li>
+<li class="oi"><span class="onum">7</span><span>Análisis plan de obras 2026</span></li>
+<li class="oi"><span class="onum">8</span><span>Elección del Consejo de Propietarios</span></li></ol>
+  </div>
+</div>
+
+<!-- S3 RESUMEN FINANCIERO -->
+<div class="slide" id="s3">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody">
+    <div class="stitle">Resumen financiero 2025</div>
+    <div class="kpis">
+      <div class="kpi"><div class="lbl">Ingresos totales</div><div class="val">$861.7M</div><div class="sub">$861.709.291</div></div>
+      <div class="kpi"><div class="lbl">Egresos totales</div><div class="val">$837.9M</div><div class="sub">$837.906.649</div></div>
+      <div class="kpi"><div class="lbl">Tenencias FCI</div><div class="val">$33.8M</div><div class="sub">Inversión al cierre</div></div>
+      <div class="kpi" style="border-left-color:#2a6a2a"><div class="lbl">Disponibilidad total</div><div class="val good">$370.0M</div><div class="sub">Sin deudas al cierre</div></div>
+    </div>
+    <div class="chart-t">Índices de variación del período (%)</div>
+    <div class="cw" style="height:200px"><canvas id="ci"></canvas></div>
+    <p class="note">Las expensas crecieron por debajo de la inflación y las prepagas — con un ambicioso plan de mantenimiento ejecutado.</p>
+  </div>
+</div>
+
+<!-- S4 FLUJO -->
+<div class="slide" id="s4">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody">
+    <div class="stitle">Evolución de flujo mensual</div>
+    <div class="leg"><div class="li"><div class="ld" style="background:#4c7a37"></div>Ingresos</div><div class="li"><div class="ld" style="background:#8ca5af"></div>Egresos</div></div>
+    <div class="cw" style="height:280px"><canvas id="cf"></canvas></div>
+    <p class="note">El saldo disponible total al cierre es de $48,5M, representando más de la mitad de un mes de egresos como capital de trabajo.</p>
+  </div>
+</div>
+
+<!-- S5 EGRESOS -->
+<div class="slide" id="s5">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+    <div><div class="stitle" style="font-size:14px">Composición de egresos 2025</div><div class="cw" style="height:270px"><canvas id="ct"></canvas></div></div>
+    <div><div class="stitle" style="font-size:14px">Participación vs 2024</div><div class="cw" style="height:270px"><canvas id="cc"></canvas></div></div>
+  </div>
+  <div class="sbody" style="padding-top:4px"><p class="note">Por cada peso, 65 centavos se destinaron a seguridad y 29 centavos a mantenimiento + abonos.</p></div>
+</div>
+
+<!-- S6 MOROSIDAD -->
+<div class="slide" id="s6">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody">
+    <div class="stitle">Evolución de la morosidad</div>
+    <div class="cw" style="height:190px"><canvas id="cm"></canvas></div>
+    <p class="note" style="margin-bottom:14px">La morosidad promedio anual fue del 14%, manteniéndose en niveles controlados durante todo el período.</p>
+    <div class="chart-t" style="margin-top:14px">Morosidad % base una expensa — 2025</div>
+    <div class="cw" style="height:140px"><canvas id="cm2"></canvas></div>
+  </div>
+</div>
+
+<!-- S7 INICIATIVAS -->
+<div class="slide" id="s7">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody">
+    <div class="stitle">Iniciativas más relevantes del período</div>
+    <div class="igrid"><div class="ii"><span class="inum">01</span><span>Modernización de luminarias — 72 farolas renovadas</span></div>
+<div class="ii"><span class="inum">02</span><span>Instalación de 30 vallas reductoras de velocidad (lote 1) y 20 adicionales (lote 2)</span></div>
+<div class="ii"><span class="inum">03</span><span>Automatización del portón mediano del acceso principal</span></div>
+<div class="ii"><span class="inum">04</span><span>Puesta en valor de la plaza de juegos</span></div>
+<div class="ii"><span class="inum">05</span><span>Reparación del puente peatonal</span></div>
+<div class="ii"><span class="inum">06</span><span>Colocación de carpeta de césped sintético en cancha de fútbol</span></div>
+<div class="ii"><span class="inum">07</span><span>Puesta en valor SUM: cerámicos y mantenimiento</span></div>
+<div class="ii"><span class="inum">08</span><span>Reparaciones red de agua potable (lotes 24, 31, 71, 143, 145, 149, 154)</span></div>
+<div class="ii"><span class="inum">09</span><span>Reparación de fibra óptica perimetral — Circuito CCTV</span></div>
+<div class="ii"><span class="inum">10</span><span>Puesta en valor techos y portón del acceso principal</span></div></div>
+  </div>
+</div>
+
+<!-- S8 VOTACIÓN 1 -->
+<div class="slide" id="s8">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody"><div class="vbox"><div class="vtitle">Votación</div>
+    <div class="vrow"><div class="vq"><span class="vletter">a)</span><span>Aprobación de la Gestión y rendición de cuentas período 2025</span></div><div class="vbtns"><button class="vbtn" onclick="vote('v1a','si',this)">Sí</button><button class="vbtn" onclick="vote('v1a','no',this)">No</button><button class="vbtn" onclick="vote('v1a','abs',this)">Abstención</button></div><div class="vresult" id="r-v1a"></div></div>
+    <div class="vrow"><div class="vq"><span class="vletter">b)</span><span>Aprobación de la continuidad de la Administración</span></div><div class="vbtns"><button class="vbtn" onclick="vote('v1b','si',this)">Sí</button><button class="vbtn" onclick="vote('v1b','no',this)">No</button><button class="vbtn" onclick="vote('v1b','abs',this)">Abstención</button></div><div class="vresult" id="r-v1b"></div></div>
+  </div><p class="note" style="text-align:center;margin-top:14px">Cada propietario puede votar una vez. Los resultados se actualizan en tiempo real.</p></div>
+</div>
+
+<!-- S9 VOTACIÓN 2 -->
+<div class="slide" id="s9">
+  <div class="shd">
+    <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+    <div class="barrio">Estancia La Casualidad</div>
+  </div>
+  <div class="sbody"><div class="vbox"><div class="vtitle">Votación — Plan de obras y Consejo</div>
+    <div class="vrow"><div class="vq"><span class="vletter">a)</span><span>Aprobación del plan de obras 2026</span></div><div class="vbtns"><button class="vbtn" onclick="vote('v2a','si',this)">Sí</button><button class="vbtn" onclick="vote('v2a','no',this)">No</button><button class="vbtn" onclick="vote('v2a','abs',this)">Abstención</button></div><div class="vresult" id="r-v2a"></div></div>
+    <div class="vrow"><div class="vq"><span class="vletter">b)</span><span>Elección de miembros del Consejo de Propietarios</span></div><div class="vbtns"><button class="vbtn" onclick="vote('v2b','si',this)">Sí</button><button class="vbtn" onclick="vote('v2b','no',this)">No</button><button class="vbtn" onclick="vote('v2b','abs',this)">Abstención</button></div><div class="vresult" id="r-v2b"></div></div>
+  </div><p class="note" style="text-align:center;margin-top:14px">Resultados en tiempo real. Cada propietario puede votar una vez por dispositivo.</p></div>
+</div>
+</div>
+
+<script>
+const M=["0,"1,"2,"3,"4,"5,"6,"7,"8,"9,"10,"1Feb"];
+</script>
+<script>
+const M=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+const ING=[55454320,61223061,64627332,70018244,70562192,67975867,69824720,70985253,82578754,82638415,77553788,88267345];
+const EGR=[60555385,61317771,55903437,67641891,67877410,68120520,68712474,69123637,74759922,83319948,75388742,85185512];
+const MORA_P=[6233898,9089894,11512350,8992768,8604408,11508801,13238020,18273323,15131752,10833965,16787229,14358480];
+const MORA_PCT=[9,12,15,11,11,14,15,20,16,11,17,14];
+const G1='#2d5a1e',G2='#4c7a37',GL='#a8c888',BL='#8ca5af',AM='#b07828';
+
+const diffPlugin={id:'dp',afterDraw(chart){
+  if(!chart.config.options._diffs)return;
+  const diffs=chart.config.options._diffs,{ctx}=chart;
+  const m0=chart.getDatasetMeta(0),m1=chart.getDatasetMeta(1);
+  diffs.forEach((diff,i)=>{
+    const b0=m0.data[i],b1=m1.data[i];if(!b0||!b1)return;
+    const xR=Math.max(b0.x+b0.width/2,b1.x+b1.width/2),yM=(b0.y+b1.y)/2;
+    const sign=diff>=0?'+':'',txt=sign+diff.toFixed(1)+'%',neg=diff<0,pad=5;
+    ctx.save();ctx.font='600 10px system-ui';
+    const tw=ctx.measureText(txt).width,cr=chart.chartArea.right;
+    let x=xR+6;if(x+tw+pad*2>cr)x=cr-tw-pad*2-2;
+    const bw=tw+pad*2,bh=16,by=yM-8;
+    ctx.fillStyle=neg?'#fde8e8':'#e8f2de';
+    ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,by,bw,bh,4);else ctx.rect(x,by,bw,bh);
+    ctx.fill();ctx.fillStyle=neg?'#8a2020':'#2d5a1e';
+    ctx.textBaseline='middle';ctx.fillText(txt,x+pad,yM);ctx.restore();
+  });
+}};
+Chart.register(diffPlugin);
+
+window.addEventListener('load',()=>{
+  new Chart(document.getElementById('ci'),{type:'bar',
+    data:{labels:['Expensas','Seguridad','Inflación IPC','Prepagas'],
+      datasets:[{data:[139.5,120.9,131.5,132.5],
+        backgroundColor:[G2,GL,AM+'99',AM],borderRadius:4,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+'%'}}},
+      scales:{y:{min:100,max:148,ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'}},
+               x:{ticks:{font:{size:11}},grid:{display:false}}}}});
+
+  new Chart(document.getElementById('cf'),{type:'line',
+    data:{labels:M,datasets:[
+      {label:'Ingresos',data:ING,borderColor:G2,backgroundColor:G2+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2},
+      {label:'Egresos',data:EGR,borderColor:BL,backgroundColor:BL+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},
+      scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},
+               x:{ticks:{font:{size:10}},grid:{display:false}}}}});
+
+  new Chart(document.getElementById('ct'),{type:'doughnut',
+    data:{labels:['Seguridad 65.4%','Abonos 17.9%','Mantenimiento 11.4%','Servicios 2.9%','Gtos.Banc. 1.7%','Varios 0.8%'],
+      datasets:[{data:[548265944,149591526,95114663,24236248,14050293,6647975],
+        backgroundColor:[G1,BL,'#8a6a30',GL,AM+'88','#bbb'],borderWidth:2,borderColor:'#fff',hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'55%',
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:7,boxWidth:9}}}}});
+
+  new Chart(document.getElementById('cc'),{type:'bar',
+    data:{labels:['Seguridad','Abonos','Mantenimiento','Servicios'],
+      datasets:[
+        {label:'2024',data:[68.19,18.17,8.77,2.89],backgroundColor:GL,borderRadius:3,borderWidth:0},
+        {label:'2025',data:[65.4,17.9,11.4,2.9],backgroundColor:G1,borderRadius:3,borderWidth:0}
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      _diffs:[-2.8,-0.3,2.6,0.0],
+      plugins:{legend:{position:'top',labels:{font:{size:10},boxWidth:9,padding:8}}},
+      scales:{x:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'},max:76},
+               y:{ticks:{font:{size:10}},grid:{display:false}}}}});
+
+  new Chart(document.getElementById('cm'),{type:'bar',
+    data:{labels:M,datasets:[{data:MORA_P,
+      backgroundColor:MORA_P.map((_,i)=>i>=9?GL:BL),borderRadius:3,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'$'+(c.raw/1e6).toFixed(2)+'M'}}},
+      scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},
+               x:{ticks:{font:{size:10}},grid:{display:false}}}}});
+
+  new Chart(document.getElementById('cm2'),{type:'bar',
+    data:{labels:M,datasets:[{label:'2025',data:MORA_PCT,backgroundColor:G2,borderRadius:2,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+'%'}}},
+      scales:{y:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'}},
+               x:{ticks:{font:{size:10},autoSkip:false},grid:{display:false}}}}});
+});
+
+const votes={};
+function vote(id,val,btn){
+  votes[id]=votes[id]===val?null:val;
+  const row=btn.closest('.vrow');
+  row.querySelectorAll('.vbtn').forEach(b=>{b.className='vbtn';});
+  if(votes[id]==='si')row.querySelectorAll('.vbtn')[0].classList.add('yes');
+  if(votes[id]==='no')row.querySelectorAll('.vbtn')[1].classList.add('no');
+  if(votes[id]==='abs')row.querySelectorAll('.vbtn')[2].classList.add('abs');
+  renderResult(id);
+}
+function renderResult(id){
+  const el=document.getElementById('r-'+id);if(!el)return;
+  const d={si:0,no:0,abs:0};if(votes[id])d[votes[id]]++;
+  const tot=d.si+d.no+d.abs,pct=tot?Math.round(d.si/tot*100):0;
+  el.innerHTML=`<div class="vbar-wrap"><div class="vbar-yes" style="width:${pct}%"></div></div>
+    <div class="vcounts" style="margin-top:4px">
+      <div class="vc-s"><div class="vc-dot" style="background:#4c7a37"></div><span style="font-size:11px;color:#3a5a2a">Sí: ${d.si} (${pct}%)</span></div>
+      <div class="vc-s"><div class="vc-dot" style="background:#a03030"></div><span style="font-size:11px;color:#3a5a2a">No: ${d.no}</span></div>
+      <div class="vc-s"><div class="vc-dot" style="background:#888"></div><span style="font-size:11px;color:#3a5a2a">Abs: ${d.abs}</span></div>
+    </div>`;
+}
+
+let cur=1;const tot=9;
+function upd(){document.getElementById('ctr').textContent=cur+' / '+tot;document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('on',i+1===cur));document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i+1===cur));}
+function go(d){cur=Math.max(1,Math.min(tot,cur+d));upd();}
+const dotsEl=document.getElementById('dots');
+for(let i=1;i<=tot;i++){const d=document.createElement('div');d.className='dot'+(i===1?' on':'');d.onclick=()=>{cur=i;upd();};dotsEl.appendChild(d);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+</script>
+</body>
+</html>
