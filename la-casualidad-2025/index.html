@@ -154,7 +154,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   </div>
   <div class="sbody">
     <div class="stitle">Evolución de flujo mensual</div>
-    <div class="leg"><div class="li"><div class="ld" style="background:#4c7a37"></div>Ingresos</div><div class="li"><div class="ld" style="background:#8ca5af"></div>Egresos</div></div>
+    <div class="leg"><div class="li"><div class="ld" style="background:#4c7a37"></div>Ingresos</div><div class="li"><div class="ld" style="background:#c0392b"></div>Egresos</div></div>
     <div class="cw" style="height:280px"><canvas id="cf"></canvas></div>
     <p class="note">Completar con comentario del período</p>
   </div>
@@ -196,16 +196,16 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   </div>
   <div class="sbody">
     <div class="stitle">Iniciativas más relevantes del período</div>
-    <div class="igrid"><div class="ii"><span class="inum">01</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">02</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">03</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">04</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">05</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">06</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">07</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">08</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">09</span><span>(completar)</span></div>
-<div class="ii"><span class="inum">10</span><span>(completar)</span></div></div>
+    <div class="igrid"><div class="ii"><span class="inum">01</span><span>Modernización de luminarias — 72 farolas renovadas</span></div>
+<div class="ii"><span class="inum">02</span><span>Instalación de 30 vallas reductoras de velocidad (lote 1) y 20 adicionales (lote 2)</span></div>
+<div class="ii"><span class="inum">03</span><span>Automatización del portón mediano del acceso principal</span></div>
+<div class="ii"><span class="inum">04</span><span>Puesta en valor de la plaza de juegos</span></div>
+<div class="ii"><span class="inum">05</span><span>Reparación del puente peatonal</span></div>
+<div class="ii"><span class="inum">06</span><span>Colocación de carpeta de césped sintético en cancha de fútbol</span></div>
+<div class="ii"><span class="inum">07</span><span>Puesta en valor SUM: cerámicos y mantenimiento</span></div>
+<div class="ii"><span class="inum">08</span><span>Reparaciones red de agua potable (lotes 24, 31, 71, 143, 145, 149, 154)</span></div>
+<div class="ii"><span class="inum">09</span><span>Reparación de fibra óptica perimetral — Circuito CCTV</span></div>
+<div class="ii"><span class="inum">10</span><span>Puesta en valor techos y portón del acceso principal</span></div></div>
   </div>
 </div>
 
@@ -268,7 +268,7 @@ Chart.register(diffPlugin);
 window.addEventListener('load',()=>{
   new Chart(document.getElementById('ci'),{type:'bar',
     data:{labels:['Expensas','Seguridad','Inflación IPC','Prepagas'],
-      datasets:[{data:[139.5,0,131.5,132.5],
+      datasets:[{data:[139.5,120.9,131.5,132.5],
         backgroundColor:[G2,GL,AM+'99',AM],borderRadius:4,borderWidth:0}]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+'%'}}},
@@ -278,7 +278,7 @@ window.addEventListener('load',()=>{
   new Chart(document.getElementById('cf'),{type:'line',
     data:{labels:M,datasets:[
       {label:'Ingresos',data:ING,borderColor:G2,backgroundColor:G2+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2},
-      {label:'Egresos',data:EGR,borderColor:BL,backgroundColor:BL+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
+      {label:'Egresos',data:EGR,borderColor:'#c0392b',backgroundColor:'#c0392b28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},
