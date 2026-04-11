@@ -27,7 +27,13 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 .barrio{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase}
 .sbody{padding:26px 34px}
 .stitle{font-size:17px;font-weight:600;color:var(--g1);margin-bottom:20px}
-.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:460px;text-align:center;background:linear-gradient(150deg,#f5f9f2 0%,#e8f2de 100%)}
+.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:460px;text-align:center;background:linear-gradient(150deg,#f5f9f2 0%,#e8f2de 100%);position:relative}
+.qr-corner{position:absolute;bottom:18px;left:18px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.qr-corner img{width:80px;height:80px;border-radius:6px;border:2px solid var(--border)}
+.qr-corner span{font-size:9px;color:var(--muted);letter-spacing:.5px}
+.qr-nav{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
+.qr-nav img{width:40px;height:40px;border-radius:4px;border:1px solid var(--border)}
+.qr-nav span{font-size:8px;color:var(--muted)}
 .cv-yr{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
 .cv-t{font-size:36px;font-weight:300;color:var(--g1);margin-bottom:6px}
 .cv-s{font-size:18px;color:var(--g2);margin-bottom:24px}
@@ -61,7 +67,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 .vrow:last-child{border-bottom:none}
 .vq{font-size:14px;color:var(--txt);display:flex;gap:10px;line-height:1.5}
 .vletter{font-weight:700;color:var(--g2);min-width:18px}
-/* Plan de obras */
+/* Plan de mantenimiento */
 .obras-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
 .obra-card{background:var(--bg);border-radius:10px;padding:18px 20px;border-left:4px solid var(--g2)}
 .obra-card .oc-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:6px}
@@ -98,7 +104,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 
 <!-- S1 PORTADA -->
 <div class="slide on" id="s1">
-  <div class="shd"><div></div><div class="barrio">Estancia La Casualidad</div></div>
+  <div class="shd"><div></div><div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div></div>
   <div class="cover">
     <svg width="90" height="68" viewBox="0 0 310 230" style="margin-bottom:18px"><use href="#logo"/></svg>
     <div class="cv-yr">Rendición de Cuentas 2025</div>
@@ -106,6 +112,10 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     <div class="cv-s">Asamblea Ordinaria</div>
     <div class="cv-div"></div>
     <div class="cv-w">Bienvenidos</div>
+    <div class="qr-corner">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR presentación">
+      <span>ESCANEÁ PARA VER</span>
+    </div>
   </div>
 </div>
 
@@ -113,7 +123,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s2">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
     <div class="stitle">Orden del día</div>
@@ -124,7 +134,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
       <li class="oi"><span class="onum">4</span><span>Aprobación de la Gestión y rendición de cuentas período 2025</span></li>
       <li class="oi"><span class="onum">5</span><span>Estado de Juicios y/o Morosidad</span></li>
       <li class="oi"><span class="onum">6</span><span>Aprobación de la continuidad de la Administración</span></li>
-      <li class="oi"><span class="onum">7</span><span>Análisis plan de obras 2026. Plan de Mejora de pavimento.</span></li>
+      <li class="oi"><span class="onum">7</span><span>Análisis plan de mantenimiento 2026. Plan de Mejora de pavimento.</span></li>
       <li class="oi"><span class="onum">8</span><span>Elección del Consejo de Propietarios</span></li>
     </ol>
   </div>
@@ -134,7 +144,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s3">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
     <div class="stitle">Resumen financiero 2025</div>
@@ -155,7 +165,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s4">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
     <div class="stitle">Evolución de flujo mensual</div>
@@ -169,7 +179,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s5">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
     <div><div class="stitle" style="font-size:14px">Composición de egresos 2025</div><div class="cw" style="height:270px"><canvas id="ct"></canvas></div></div>
@@ -182,7 +192,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s6">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
     <div class="stitle">Evolución de la morosidad. Base de una expensa.</div>
@@ -199,7 +209,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s7">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
     <div class="stitle">Iniciativas más relevantes del período</div>
@@ -222,7 +232,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s8">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
     <div class="vbox">
@@ -241,10 +251,10 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s9">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
-    <div class="stitle">Plan de obras 2026 — Mejora de pavimento</div>
+    <div class="stitle">Plan de mantenimiento 2026 — Mejora de pavimento</div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Calle del lote 100 al 110</p>
     <div class="obra-highlight">
       <div class="oc-lbl">Costo total estimado (con IVA)</div>
@@ -263,7 +273,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
         <div class="oc-sub">Calle lote 100 al 110</div>
       </div>
     </div>
-    <p class="note" style="margin-top:14px">Para poder cumplir con el plan de obras, se hará un ajuste de expensas equivalente a la inflación + 1% mensualmente, a partir de junio.</p>
+    <p class="note" style="margin-top:14px">Para poder cumplir con el plan de mantenimiento, se hará un ajuste de expensas equivalente a la inflación + 1% mensualmente, a partir de junio.</p>
     <p class="note" style="margin-top:8px">Los valores son de referencia y ajustables según el Índice de la Cámara de Construcción (CAC).</p>
   </div>
 </div>
@@ -272,13 +282,13 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <div class="slide" id="s10">
   <div class="shd">
     <div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
-    <div class="barrio">Estancia La Casualidad</div>
+    <div class="barrio">Estancia La Casualidad</div><div class="qr-nav"><img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://admin-laudato.github.io/laudato/la-casualidad-2025/" alt="QR"><span>VER PPT</span></div>
   </div>
   <div class="sbody">
     <div class="vbox">
-      <div class="vtitle">Votación — Plan de obras y Consejo</div>
+      <div class="vtitle">Votación — Plan de mantenimiento y Consejo</div>
       <div class="vrow">
-        <div class="vq"><span class="vletter">a)</span><span>Aprobación del plan de obras 2026 — Mejora de pavimento calle lote 100 al 110</span></div>
+        <div class="vq"><span class="vletter">a)</span><span>Aprobación del plan de mantenimiento 2026 — Mejora de pavimento calle lote 100 al 110</span></div>
       </div>
       <div class="vrow">
         <div class="vq"><span class="vletter">b)</span><span>Elección de miembros del Consejo de Propietarios</span></div>
