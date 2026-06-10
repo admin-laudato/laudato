@@ -146,7 +146,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
       <div class="kpi" style="border-left-color:#2a6a2a"><div class="lbl">Patrimonio neto</div><div class="val good">$364,5M</div><div class="sub">$364.484.253</div></div>
     </div>
     <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
-      <div class="kpi"><div class="lbl">454 UFs</div><div class="val">$558.783</div><div class="sub">Expensa ordinaria mar-26</div></div>
+      <div class="kpi"><div class="lbl">451 UFs</div><div class="val">$558.783</div><div class="sub">Expensa ordinaria mar-26</div></div>
       <div class="kpi"><div class="lbl">IPC acumulado 2025</div><div class="val">31,5%</div><div class="sub">Fuente: INDEC</div></div>
       <div class="kpi"><div class="lbl">Aumento expensas 2025</div><div class="val">~45%</div><div class="sub">Acumulado ene–dic</div></div>
     </div>
@@ -177,7 +177,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
       <div><div class="stitle" style="font-size:14px">Composición de egresos 2025</div><div class="cw" style="height:280px"><canvas id="ct"></canvas></div></div>
       <div><div class="stitle" style="font-size:14px">Evolución mensual — Seguridad (Watchman)</div><div class="cw" style="height:280px"><canvas id="cw"></canvas></div></div>
     </div>
-    <p class="note">El rubro de seguridad (Watchman + M.O. Seguridad nocturno) combinado representa el 46,6% del gasto total anual. Se cancela a 45 días promedio posterior a la facturación.</p>
+    <p class="note">El rubro de seguridad (Watchman + M.O. nocturno) combinado representa el 46,6% del gasto total anual. El incremento del +59% responde a dos factores: el aumento del valor hora-hombre de Watchman y una dotación de puestos sobredimensionada. Se cancela a 45 días promedio posterior a la facturación.</p>
   </div>
 </div>
 
@@ -214,7 +214,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     <div class="stitle">Incremento mensual de expensas vs. IPC INDEC</div>
     <div class="leg"><div class="li"><div class="ld" style="background:#4c7a37"></div>Aumento expensas</div><div class="li"><div class="ld" style="background:#c0392b88"></div>IPC INDEC</div></div>
     <div class="cw" style="height:300px"><canvas id="cipc"></canvas></div>
-    <p class="note">En Q1 los aumentos superaron la inflación (7% vs ~2,5%). A partir de mayo se desaceleraron, quedando consistentemente por debajo del IPC.</p>
+    <p class="note">Durante el segundo semestre de 2024, la administración anterior (Costa) mantuvo las expensas prácticamente sin ajuste, lo que desfinanció al consorcio. Los aumentos por encima del IPC en Q1 2025 responden a la necesidad de reequilibrar esa brecha. A partir de mayo, los aumentos se moderaron quedando por debajo de la inflación.</p>
   </div>
 </div>
 
@@ -225,7 +225,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     <div class="stitle">Evolución de la morosidad</div>
     <div class="chart-t">Deuda acumulada ($M)</div>
     <div class="cw" style="height:300px"><canvas id="cm"></canvas></div>
-    <p class="note" style="margin-top:14px">La deuda creció de $55,8M (ene) a $126,7M (dic). 35 UFs en mora a diciembre 2025. A marzo 2026: $179,7M, 97 UFs en mora, 12 con juicio activo. Se gestionan cartas documento y acuerdos de pago.</p>
+    <p class="note" style="margin-top:14px">La deuda creció de $55,8M (ene) a $126,7M (dic). 35 UFs en mora a diciembre 2025. Cabe destacar que la morosidad creció con mayor fuerza en los meses donde el aumento de expensas igualó o superó al IPC. A marzo 2026: $179,7M, 97 UFs en mora, 12 con juicio activo. Se gestionan cartas documento y acuerdos de pago.</p>
   </div>
 </div>
 
@@ -295,17 +295,18 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     <table class="tbl">
       <thead><tr><th>Proveedor</th><th>Servicio que presta</th><th>Estado</th></tr></thead>
       <tbody>
-        <tr><td class="bold">Watchman</td><td>Seguridad física</td><td><span class="dc-tag proceso">EN PROCESO</span></td></tr>
+        <tr><td class="bold">Watchman</td><td>Seguridad física</td><td><span class="dc-tag nuevo">VIGENTE</span></td></tr>
         <tr><td>MO Seguridad</td><td>Corredor seguro</td><td><span class="dc-tag proceso">EN PROCESO</span></td></tr>
         <tr><td>DESVIRO SA (Aliara)</td><td>Cerco eléctrico</td><td><span class="dc-tag vencido">DISCONTINUADO</span></td></tr>
-        <tr><td>FANXP (Overnet)</td><td>Sistema de cámaras</td><td><span class="dc-tag proceso">EN PROCESO</span></td></tr>
+        <tr><td>FANXP (Overnet)</td><td>Sistema de cámaras</td><td><span class="dc-tag vencido">DISCONTINUADO</span></td></tr>
         <tr><td>Cablevisión</td><td>Sistema de TV e internet</td><td><span class="dc-tag nuevo">VIGENTE</span></td></tr>
         <tr><td>ADR Norte (Colonia)</td><td>Colonia</td><td><span class="dc-tag nuevo">VIGENTE</span></td></tr>
-        <tr><td>Volquetes Pilar</td><td>Recolección de residuos</td><td><span class="dc-tag proceso">EN PROCESO</span></td></tr>
+        <tr><td>Volquetes Pilar</td><td>Recolección de residuos</td><td><span class="dc-tag nuevo">VIGENTE</span></td></tr>
         <tr><td>Gardiens de la Vie SRL</td><td>Guardavidas</td><td><span class="dc-tag nuevo">VIGENTE</span></td></tr>
+        <tr><td>Olleac</td><td>Espacios verdes</td><td><span class="dc-tag nuevo">VIGENTE</span></td></tr>
       </tbody>
     </table>
-    <p class="note">Se está trabajando en la regularización de todos los contratos vencidos. El sistema de ingreso Open Key ya fue renovado con el prestador actual.</p>
+    <p class="note">Contratos de seguridad, espacios verdes y recolección de residuos firmados con los prestadores actuales. Se continúa trabajando en la regularización de los contratos restantes. El sistema de ingreso Open Key ya fue renovado.</p>
   </div>
 </div>
 
@@ -315,8 +316,8 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   <div class="sbody">
     <div class="stitle">Contrato de seguridad — Watchman</div>
     <div class="diag-card" style="border-left-color:#3a6ea5">
-      <div class="dc-head"><div class="dc-title">Estado del contrato</div><div class="dc-tag proceso">EN PROCESO</div></div>
-      <div class="dc-body">El contrato de seguridad se encuentra en proceso de renovación. El prestador opera con una <strong>nueva razón social (Seguridad Watchman S.A., CUIT 30-71221490-9)</strong>.</div>
+      <div class="dc-head"><div class="dc-title">Estado del contrato</div><div class="dc-tag nuevo">VIGENTE</div></div>
+      <div class="dc-body">El contrato de seguridad ha sido renovado. El prestador opera con una <strong>nueva razón social (Seguridad Watchman S.A., CUIT 30-71221490-9)</strong>.</div>
     </div>
     <div class="diag-card" style="border-left-color:var(--g1)">
       <div class="dc-head"><div class="dc-title">Documentación solicitada</div><div class="dc-tag nuevo">APROBADA</div></div>
@@ -324,7 +325,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     </div>
     <div class="diag-card" style="border-left-color:var(--am)">
       <div class="dc-head"><div class="dc-title">Contingencia patrimonial</div><div class="dc-tag propuesta">~$150M</div></div>
-      <div class="dc-body">Expedientes judiciales: <strong>"Hipólito c/ Watchman" y "Vaamonde c/ Watchman"</strong>. Se propone la constitución de un <strong>fondo de $150M mediante la retención automática de un porcentaje de la facturación mensual</strong>. Se mantiene fianza personal de socios y cláusula de indemnidad.</div>
+      <div class="dc-body">Expedientes judiciales: <strong>"Hipólito c/ Watchman" y "Vaamonde c/ Watchman"</strong>. Se resuelve mediante la <strong>retención de pagos por ese importe hasta la finalización del proceso judicial</strong>. Se mantiene cláusula de indemnidad.</div>
     </div>
   </div>
 </div>
@@ -350,9 +351,9 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Barrio La Delfina</div><div class="section-tag part2">Parte 2 — Diagnóstico</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/la-delfina-2025/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
     <div class="stitle">Otros contratos y medidas implementadas</div>
-    <div class="diag-card">
-      <div class="dc-head"><div class="dc-title">Recolección de residuos</div><div class="dc-tag vencido">CONTRATO VENCIDO</div></div>
-      <div class="dc-body">El contrato de recolección de residuos se encuentra vencido. <strong>Se buscará renovar con los actuales prestadores</strong> para mantener la continuidad operativa.</div>
+    <div class="diag-card" style="border-left-color:var(--g1)">
+      <div class="dc-head"><div class="dc-title">Recolección de residuos</div><div class="dc-tag nuevo">CONTRATO VIGENTE</div></div>
+      <div class="dc-body">Contrato firmado con los prestadores actuales. <strong>La demora en la regularización expuso al consorcio a contingencias y reclamos municipales u organismos de control como generadores de residuos.</strong></div>
     </div>
     <div class="diag-card" style="border-left-color:var(--g1)">
       <div class="dc-head"><div class="dc-title">Baja de cuenta recaudadora Roela</div><div class="dc-tag nuevo">IMPLEMENTADO</div></div>
@@ -420,21 +421,18 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
           <div class="dc-title" style="font-size:11px;margin-bottom:4px">Tareas de temporada baja</div>
           <div class="dc-body" style="font-size:10.5px">Corte con tractor · Bordeo del barrio y canchas · Limpieza de alcantarillas · Recolección de residuos verdes · Resiembras · Perfilado de calles · Tratamiento de hormigas</div>
         </div>
-      </div>
-      
-    </div>
     <p class="note">Plan elaborado por el servicio de espacios verdes. Las podas se realizarán según visita previa de intendencia para determinar el tipo de poda correspondiente en cada caso.</p>
   </div>
 </div>
 
-<!-- S17 VOTACIÓN -->
+<!-- S17 RESUMEN -->
 <div class="slide" id="s17">
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Barrio La Delfina</div><div class="section-tag part2">Parte 2 — Diagnóstico</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/la-delfina-2025/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
     <div class="vbox">
-      <div class="vtitle">Votación — Plan de mantenimiento</div>
-      <div class="vrow"><div class="vq"><span class="vletter">a)</span><span>Aprobación del plan de reparación de pavimento 2026 — Prioridad alta: 3.306 m² de asfalto roto</span></div></div>
-      <div class="vrow"><div class="vq"><span class="vletter">b)</span><span>Aprobación del plan de paisajismo y espacios verdes — Podas formativas, retiro y reemplazo de 163 árboles</span></div></div>
+      <div class="vtitle">Resumen — Plan de Mantenimiento</div>
+      <div class="vrow"><div class="vq"><span class="vletter">1.</span><span>Plan de reparación de pavimento 2026 — Prioridad alta: 3.306 m² de asfalto roto. <strong>Costo estimado del bacheo: una expensa adicional.</strong></span></div></div>
+      <div class="vrow"><div class="vq"><span class="vletter">2.</span><span>Plan de paisajismo y espacios verdes — Podas formativas, retiro y reemplazo de 163 árboles. <strong>Costo estimado: el equivalente a media expensa adicional.</strong></span></div></div>
     </div>
   </div>
 </div>
@@ -457,7 +455,7 @@ const G1='#2d5a1e',G2='#4c7a37',GL='#a8c888',BL='#8ca5af',AM='#b07828',RED='#b03
 
 window.addEventListener('load',()=>{
   new Chart(document.getElementById('cf'),{type:'line',data:{labels:M,datasets:[{label:'Ingresos',data:ING,borderColor:G2,backgroundColor:G2+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2},{label:'Egresos',data:EGR,borderColor:'#c0392b',backgroundColor:'#c0392b18',fill:true,tension:.3,pointRadius:3,borderWidth:2},{label:'IPC acumulado',data:ipcLine,borderColor:AM,backgroundColor:'transparent',fill:false,tension:.3,pointRadius:2,borderWidth:2,borderDash:[6,3]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},x:{ticks:{font:{size:10}},grid:{display:false}}}}});
-  new Chart(document.getElementById('ct'),{type:'doughnut',data:{labels:['Seguridad 44,7%','Tasa Mun. 17,2%','Sueldos 9,0%','Esp.Verdes 5,4%','Gtos Banc. 3,1%','Residuos 2,8%','Serv.Púb. 2,1%','Otros 15,7%'],datasets:[{data:[1265,487,251,153,87,79,60,445],backgroundColor:[G1,BL,'#8a6a30',GL,AM+'cc','#7a9a6a','#a0b890','#bbb'],borderWidth:2,borderColor:'#fff',hoverOffset:5}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{font:{size:9},padding:5,boxWidth:8}}}}});
+  new Chart(document.getElementById('ct'),{type:'doughnut',data:{labels:['Seguridad 44,7%','Tasa Mun. 17,2%','Sueldos 9,0%','Esp.Verdes 5,4%','Gtos Banc. 3,1%','Residuos 2,8%','Canchas 2,2%','Serv.Púb. 2,1%','M.O.Nocturno 1,9%','Admin.Costa 1,7%','CCTV 0,8%','Varios 6,1%'],datasets:[{data:[1265,487,251,153,87,79,62,60,54,48,23,258],backgroundColor:[G1,BL,'#8a6a30',GL,AM+'cc','#7a9a6a','#c4a060','#a0b890','#5a7a4a','#d4b888','#90a880','#ccc'],borderWidth:2,borderColor:'#fff',hoverOffset:5}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{font:{size:8},padding:4,boxWidth:7}}}}});
   new Chart(document.getElementById('cw'),{type:'line',data:{labels:M,datasets:[{label:'Watchman',data:WATCH,borderColor:G1,backgroundColor:G1+'30',fill:true,tension:.3,pointRadius:3,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'$'+c.raw.toFixed(1)+'M'}}},scales:{y:{ticks:{callback:v=>'$'+v+'M',font:{size:9}},grid:{color:'#f0f0f0'}},x:{ticks:{font:{size:10}},grid:{display:false}}}}});
   new Chart(document.getElementById('cipc'),{type:'bar',data:{labels:M,datasets:[{label:'Aumento expensas',data:EXP_INC,backgroundColor:G2,borderRadius:3,borderWidth:0},{label:'IPC INDEC',data:IPC_IND,backgroundColor:'#c0392b88',borderRadius:3,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw+'%'}}},scales:{y:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'}},x:{ticks:{font:{size:10}},grid:{display:false}}}}});
   new Chart(document.getElementById('cm'),{type:'bar',data:{labels:M,datasets:[{label:'Deuda acumulada',data:MORA_AMT,backgroundColor:AM+'99',borderRadius:3,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'$'+c.raw+'M'}}},scales:{y:{ticks:{callback:v=>'$'+v+'M',font:{size:9}},grid:{color:'#f0f0f0'}},x:{ticks:{font:{size:10}},grid:{display:false}}}}});
