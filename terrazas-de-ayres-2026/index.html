@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asamblea Terrazas de Ayres 2025/26 — Laudato Administración</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g1:#2d5a1e;--g2:#4c7a37;--g3:#305c31;--bl:#8ca5af;--bg:#f7f9f5;--border:#d8e8c8;--txt:#1a2a10;--muted:#6a8060;--am:#b07828;--gl:#a8c888}
+html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#eef2ea}
+.pres{max-width:960px;margin:0 auto}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:12px}
+.logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-txt .l1{font-size:11px;font-weight:700;color:var(--g1);letter-spacing:.8px}
+.logo-txt .l2{font-size:9px;color:var(--muted)}
+.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+.dot.on{background:var(--g1);transform:scale(1.35)}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.nbt{padding:5px 14px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--g1);font-size:12px;cursor:pointer;font-family:inherit}
+.nbt:hover{background:var(--bg)}
+.ctr{font-size:11px;color:var(--muted);white-space:nowrap}
+.slide{display:none;min-height:520px;background:#fff}
+.slide.on{display:block}
+.shd{display:flex;justify-content:space-between;align-items:center;padding:12px 28px;border-bottom:2px solid var(--border)}
+.barrio{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase}
+.sbody{padding:26px 34px}
+.stitle{font-size:17px;font-weight:600;color:var(--g1);margin-bottom:20px}
+.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:460px;text-align:center;background:linear-gradient(150deg,#f5f9f2 0%,#e8f2de 100%);position:relative}
+.cv-yr{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.cv-t{font-size:36px;font-weight:300;color:var(--g1);margin-bottom:6px}
+.cv-s{font-size:18px;color:var(--g2);margin-bottom:24px}
+.cv-div{width:50px;height:2px;background:var(--g2);margin:0 auto 24px}
+.cv-w{font-size:13px;color:var(--muted);font-weight:300}
+.qr-cover{position:absolute;bottom:20px;left:24px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.qr-cover img{width:80px;height:80px;border-radius:6px;border:2px solid var(--border)}
+.qr-cover span{font-size:9px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase}
+.qr-sm{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0}
+.qr-sm img{width:44px;height:44px;border-radius:4px;border:1px solid var(--border)}
+.qr-sm span{font-size:8px;color:var(--muted)}
+.olist{list-style:none}
+.oi{display:flex;align-items:flex-start;gap:14px;padding:11px 0;border-bottom:1px solid var(--bg);font-size:13.5px;color:var(--txt)}
+.oi:last-child{border-bottom:none}
+.onum{min-width:26px;height:26px;background:var(--g1);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:22px}
+@media(min-width:640px){.kpis{grid-template-columns:repeat(5,1fr)}}
+.kpi{background:var(--bg);border-radius:8px;padding:13px 14px;border-left:3px solid var(--g2)}
+.kpi .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:5px}
+.kpi .val{font-size:16px;font-weight:700;color:var(--g1)}
+.kpi .sub{font-size:10px;color:var(--muted);margin-top:2px}
+.good{color:#2a6a2a!important}
+.chart-t{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:10px}
+.cw{position:relative;width:100%}
+.note{font-size:11px;color:var(--muted);margin-top:10px;font-style:italic;line-height:1.55}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.ld{width:10px;height:10px;border-radius:2px}
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.ii{display:flex;gap:9px;align-items:flex-start;padding:9px 11px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--txt)}
+.inum{font-weight:700;color:var(--g2);min-width:20px;font-size:11px}
+.vbox{border:1.5px solid var(--border);border-radius:12px;padding:26px 30px;max-width:580px;margin:24px auto 0}
+.vtitle{font-size:20px;font-weight:600;color:var(--g1);margin-bottom:18px;text-align:center}
+.vrow{padding:14px 0;border-bottom:1px solid var(--bg)}
+.vrow:last-child{border-bottom:none}
+.vq{font-size:14px;color:var(--txt);display:flex;gap:10px;line-height:1.5}
+.vletter{font-weight:700;color:var(--g2);min-width:18px}
+.obras-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.obra-card{background:var(--bg);border-radius:10px;padding:18px 20px;border-left:4px solid var(--g2)}
+.obra-card .oc-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:6px}
+.obra-card .oc-val{font-size:20px;font-weight:700;color:var(--g1)}
+.obra-card .oc-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.obra-highlight{background:var(--g1);border-radius:10px;padding:18px 20px;text-align:center;margin-bottom:16px}
+.obra-highlight .oc-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#a8c888;margin-bottom:6px}
+.obra-highlight .oc-val{font-size:28px;font-weight:700;color:#fff}
+.obra-highlight .oc-sub{font-size:12px;color:#c8e6b8;margin-top:4px}
+.pend-box{border:1.5px dashed var(--am);border-radius:10px;padding:16px 18px;background:#fff8ee;max-width:600px;margin:16px auto 0}
+.pend-box .pb-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--am);font-weight:700;margin-bottom:6px}
+.pend-box .pb-txt{font-size:12px;color:var(--txt);line-height:1.6}
+.callout-box{background:#fff3e0;border-left:4px solid var(--am);border-radius:6px;padding:14px 16px;margin-top:16px;font-size:12.5px;color:#7a4e10;line-height:1.55}
+.callout-box strong{color:var(--am)}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="logo" viewBox="0 0 310 230">
+    <polygon points="15.5,209 39.5,209 126,59.2 114,38.4" fill="#8ca5af"/>
+    <polygon points="51.5,209 75.5,209 144,90.4 132,69.6" fill="#8ca5af"/>
+    <polygon points="138,59.2 162,59.2 210.4,143 186.4,143" fill="#4c7a37"/>
+    <polygon points="149.6,17 173.6,17 246.4,143 222.4,143" fill="#4c7a37"/>
+    <polygon points="118.7,155 106.6,176 295.4,176 283.3,155" fill="#305c31"/>
+    <polygon points="99.6,188 87.5,209 284.5,209 272.4,188" fill="#305c31"/>
+  </symbol>
+</svg>
+
+<div class="pres">
+<nav class="nav">
+  <div class="logo-wrap"><svg width="44" height="33" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+  <div class="dots" id="dots"></div>
+  <div class="nav-btns">
+    <span class="ctr" id="ctr">1 / 10</span>
+    <button class="nbt" onclick="go(-1)">← Ant.</button>
+    <button class="nbt" onclick="go(1)">Sig. →</button>
+  </div>
+</nav>
+
+<!-- S1 PORTADA -->
+<div class="slide on" id="s1">
+  <div class="shd"><div></div><div class="barrio">Terrazas de Ayres</div></div>
+  <div class="cover">
+    <svg width="90" height="68" viewBox="0 0 310 230" style="margin-bottom:18px"><use href="#logo"/></svg>
+    <div class="cv-yr">Rendición de Cuentas 2025/26</div>
+    <div class="cv-t">Terrazas de Ayres</div>
+    <div class="cv-s">Asamblea Ordinaria</div>
+    <div class="cv-div"></div>
+    <div class="cv-w">Bienvenidos</div>
+    <div class="qr-cover">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR">
+      <span>Escaneá para ver</span>
+    </div>
+  </div>
+</div>
+
+<!-- S2 ORDEN DEL DÍA -->
+<div class="slide" id="s2">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Orden del día</div>
+    <ol class="olist">
+      <li class="oi"><span class="onum">1</span><span>Constitución legal de la Asamblea</span></li>
+      <li class="oi"><span class="onum">2</span><span>Designación de dos copropietarios para firmar el Acta</span></li>
+      <li class="oi"><span class="onum">3</span><span>Designación del Presidente de la Asamblea</span></li>
+      <li class="oi"><span class="onum">4</span><span>Aprobación de la Gestión y rendición de cuentas período Junio 2025 – Mayo 2026</span></li>
+      <li class="oi"><span class="onum">5</span><span>Aprobación de la continuidad de la Administración</span></li>
+      <li class="oi"><span class="onum">6</span><span>Continuidad de obras: Pañol y Tarquini</span></li>
+      <li class="oi"><span class="onum">7</span><span>Elección del Consejo de Propietarios</span></li>
+    </ol>
+  </div>
+</div>
+
+<!-- S3 RESUMEN FINANCIERO -->
+<div class="slide" id="s3">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Resumen financiero 2025/26</div>
+    <div class="kpis">
+      <div class="kpi"><div class="lbl">Ingresos totales</div><div class="val">$847.0M</div><div class="sub">$846.969.648</div></div>
+      <div class="kpi"><div class="lbl">Egresos totales</div><div class="val">$831.5M</div><div class="sub">$831.465.548</div></div>
+      <div class="kpi"><div class="lbl">Tenencias FCI</div><div class="val">$47.0M</div><div class="sub">Inversión al cierre</div></div>
+      <div class="kpi" style="border-left-color:#2a6a2a"><div class="lbl">Disponibilidad total</div><div class="val good">$56.9M</div><div class="sub">$56.887.246</div></div>
+      <div class="kpi" style="border-left-color:#2a6a2a"><div class="lbl">Saldo bancario al cierre</div><div class="val good">$9.8M</div><div class="sub">$9.841.878</div></div>
+    </div>
+    <div class="chart-t">Presión de costos sobre la expensa (jun-25 → may-26)</div>
+    <div class="obras-grid" style="margin-bottom:8px">
+      <div class="obra-card"><div class="oc-lbl">Seguridad — costo hora/hombre</div><div class="oc-val">$17.000 → $20.127</div><div class="oc-sub">+18% en el período (mismas 1.464 hs.)</div></div>
+      <div class="obra-card"><div class="oc-lbl">AySA — tasa sanitaria mensual</div><div class="oc-val">$5,56M → $7,35M</div><div class="oc-sub">+32% en el período</div></div>
+    </div>
+    <p class="note">Ambos servicios aumentaron muy por encima de la inflación del período, presionando el ajuste de expensas.</p>
+  </div>
+</div>
+
+<!-- S4 FLUJO MENSUAL -->
+<div class="slide" id="s4">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Evolución de flujo mensual</div>
+    <div class="leg"><div class="li"><div class="ld" style="background:#4c7a37"></div>Ingresos</div><div class="li"><div class="ld" style="background:#c0392b"></div>Egresos</div></div>
+    <div class="cw" style="height:280px"><canvas id="cf"></canvas></div>
+    <p class="note">Los ingresos y egresos evolucionan en equilibrio a lo largo del período jun-25/may-26.</p>
+  </div>
+</div>
+
+<!-- S5 COMPOSICIÓN EGRESOS -->
+<div class="slide" id="s5">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+    <div><div class="stitle" style="font-size:14px">Composición de egresos 2025/26</div><div class="cw" style="height:270px"><canvas id="ct"></canvas></div></div>
+    <div><div class="stitle" style="font-size:14px">Participación por período (jun-may)</div><div class="cw" style="height:270px"><canvas id="cc"></canvas></div></div>
+  </div>
+  <div class="sbody" style="padding-top:4px"><p class="note">Seguridad y sueldos de personal concentran más de la mitad de los egresos. Mantenimiento bajó su participación respecto del período jun-24/may-25.</p></div>
+</div>
+
+<!-- S6 INICIATIVAS EXTRAORDINARIAS -->
+<div class="slide" id="s6">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Iniciativas extraordinarias del período</div>
+    <div class="obra-highlight">
+      <div class="oc-lbl">Total aprobado / a recaudar</div>
+      <div class="oc-val">$77.293.850</div>
+      <div class="oc-sub">Depósito de ramas, Asfalto, Cocheras, Tarquini y Pañol</div>
+    </div>
+    <div class="obras-grid">
+      <div class="obra-card"><div class="oc-lbl">Depósito de ramas — Realizada</div><div class="oc-val">$5.190.000</div><div class="oc-sub">Aprobada y ejecutada</div></div>
+      <div class="obra-card"><div class="oc-lbl">Asfalto — Realizada</div><div class="oc-val">$8.403.850</div><div class="oc-sub">Aprobada y ejecutada</div></div>
+      <div class="obra-card"><div class="oc-lbl">Cocheras — Realizada</div><div class="oc-val">$4.200.000</div><div class="oc-sub">Aprobada y ejecutada</div></div>
+      <div class="obra-card"><div class="oc-lbl">Tarquini — En prueba</div><div class="oc-val">$27.500.000</div><div class="oc-sub">Aprobada, en etapa de prueba</div></div>
+      <div class="obra-card" style="border-left-color:var(--am)"><div class="oc-lbl">Desvinculación de personal (Acosta)</div><div class="oc-val">$5.556.658</div><div class="oc-sub">Aprobada por Asamblea Extraordinaria del 04/03/2026</div></div>
+    </div>
+    <p class="note">La Pileta ($23.000.000) fue evaluada pero no aprobada en el período. El Pañol ($9.000.000) fue aprobado pero aún no ejecutado — pasa a continuidad de obras del próximo período.</p>
+    <div class="callout-box"><strong>Para destacar en la asamblea:</strong> la desvinculación de personal, aprobada en la Asamblea Extraordinaria del 4 de marzo de 2026, tuvo un costo final de $5.556.658 — inferior al monto originalmente aprobado, generando un ahorro directo para el barrio.</div>
+  </div>
+</div>
+
+<!-- S7 OTRAS MEJORAS -->
+<div class="slide" id="s7">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Otras mejoras y mantenimientos del período</div>
+    <div class="igrid">
+      <div class="ii"><span class="inum">01</span><span>Provisión e instalación de 8 cables de acero — ascensor bloque B</span></div>
+      <div class="ii"><span class="inum">02</span><span>Ploteo de 33 carteles internos</span></div>
+      <div class="ii"><span class="inum">03</span><span>Puesta en valor techo SUM, guardia y quincho</span></div>
+      <div class="ii"><span class="inum">04</span><span>Puesta en valor de Intendencia (pintura, plomería, pisos)</span></div>
+      <div class="ii"><span class="inum">05</span><span>Cambio de ventanas en guardia</span></div>
+      <div class="ii"><span class="inum">06</span><span>4 m³ de piedra dolomita para Parque Central</span></div>
+      <div class="ii"><span class="inum">07</span><span>Equipamiento de gimnasio (cables, barra, banco, colchonetas)</span></div>
+      <div class="ii"><span class="inum">08</span><span>Bomba de filtrado de agua de pileta</span></div>
+      <div class="ii"><span class="inum">09</span><span>Reforma de lavadero (cielorraso, luminarias, agua caliente)</span></div>
+      <div class="ii"><span class="inum">10</span><span>Revisión anual de 44 extintores y 2 carros</span></div>
+      <div class="ii"><span class="inum">11</span><span>Construcción de portones en accesos secundarios</span></div>
+      <div class="ii"><span class="inum">12</span><span>Poda de casuarinas en calle Camelias</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- S8 VOTACIÓN GESTIÓN -->
+<div class="slide" id="s8">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="vbox">
+      <div class="vtitle">Votación</div>
+      <div class="vrow"><div class="vq"><span class="vletter">a)</span><span>Aprobación de la Gestión y rendición de cuentas período Junio 2025 – Mayo 2026</span></div></div>
+      <div class="vrow"><div class="vq"><span class="vletter">b)</span><span>Aprobación de la continuidad de la Administración</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S9 CONTINUIDAD DE OBRAS -->
+<div class="slide" id="s9">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Continuidad de obras — Próximo período</div>
+    <div class="obras-grid">
+      <div class="obra-card"><div class="oc-lbl">Pañol</div><div class="oc-val">$9.000.000</div><div class="oc-sub">Aprobado por asamblea anterior, pendiente de ejecución</div></div>
+      <div class="obra-card"><div class="oc-lbl">Tarquini</div><div class="oc-val">$27.500.000</div><div class="oc-sub">En etapa de prueba, a confirmar continuidad</div></div>
+    </div>
+    <p class="note">Se propone continuar y finalizar estas dos obras ya aprobadas en el próximo período, ajustando expensas según inflación e Índice CAC donde corresponda.</p>
+  </div>
+</div>
+
+<!-- S10 VOTACIÓN FINAL -->
+<div class="slide" id="s10">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="vbox">
+      <div class="vtitle">Votación — Continuidad de obras y Consejo</div>
+      <div class="vrow"><div class="vq"><span class="vletter">a)</span><span>Aprobación de la continuidad de obras — Pañol y Tarquini</span></div></div>
+      <div class="vrow"><div class="vq"><span class="vletter">b)</span><span>Elección de miembros del Consejo de Propietarios</span></div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const M=["Jun","Jul","Ago","Sep","Oct","Nov","Dic","Ene","Feb","Mar","Abr","May"];
+const ING=[59043818,58122193,63472354,68434491,62068023,63701108,71149974,78942976,75011225,81690865,80267182,85065439];
+const EGR=[69468397,56152839,61436240,59710247,61786220,72829433,81180525,72722525,73617347,69062992,76457150,77041632];
+const G1='#2d5a1e',G2='#4c7a37',GL='#a8c888',BL='#8ca5af',AM='#b07828';
+
+const diffPlugin={id:'dp',afterDraw(chart){
+  if(!chart.config.options._diffs)return;
+  const diffs=chart.config.options._diffs,{ctx}=chart;
+  const m0=chart.getDatasetMeta(0),m1=chart.getDatasetMeta(1);
+  diffs.forEach((diff,i)=>{
+    const b0=m0.data[i],b1=m1.data[i];if(!b0||!b1)return;
+    const xR=Math.max(b0.x+b0.width/2,b1.x+b1.width/2),yM=(b0.y+b1.y)/2;
+    const sign=diff>=0?'+':'',txt=sign+diff.toFixed(1)+'%',neg=diff<0,pad=5;
+    ctx.save();ctx.font='600 10px system-ui';
+    const tw=ctx.measureText(txt).width,cr=chart.chartArea.right;
+    let x=xR+6;if(x+tw+pad*2>cr)x=cr-tw-pad*2-2;
+    const bw=tw+pad*2,bh=16,by=yM-8;
+    ctx.fillStyle=neg?'#e8f2de':'#fde8e8';
+    ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,by,bw,bh,4);else ctx.rect(x,by,bw,bh);
+    ctx.fill();ctx.fillStyle=neg?'#2d5a1e':'#8a2020';
+    ctx.textBaseline='middle';ctx.fillText(txt,x+pad,yM);ctx.restore();
+  });
+}};
+Chart.register(diffPlugin);
+
+window.addEventListener('load',()=>{
+  new Chart(document.getElementById('cf'),{type:'line',
+    data:{labels:M,datasets:[
+      {label:'Ingresos',data:ING,borderColor:G2,backgroundColor:G2+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2},
+      {label:'Egresos',data:EGR,borderColor:'#c0392b',backgroundColor:'#c0392b28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},
+      scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},
+               x:{ticks:{font:{size:10}},grid:{display:false}}}}});
+
+  new Chart(document.getElementById('ct'),{type:'doughnut',
+    data:{labels:['Seguridad 39,7%','Sueldo Personal 15,2%','Mantenimiento 14,1%','Abonos 13,8%','Servicios 12,4%','Otros 4,7%'],
+      datasets:[{data:[330492645,126142679,117269771,114815350,103350788,39394315],
+        backgroundColor:[G1,BL,'#8a6a30',GL,AM+'88','#bbb'],borderWidth:2,borderColor:'#fff',hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'55%',
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:7,boxWidth:9}}}}});
+
+  new Chart(document.getElementById('cc'),{type:'bar',
+    data:{labels:['Seguridad','Mantenimiento','Costo Laboral','Abonos y Servicios'],
+      datasets:[
+        {label:'2024/2025',data:[41.9,20.7,14.3,13.7],backgroundColor:GL,borderRadius:3,borderWidth:0},
+        {label:'2025/2026',data:[39.7,14.1,15.2,13.8],backgroundColor:G1,borderRadius:3,borderWidth:0}
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      _diffs:[-2.2,-6.6,0.9,0.1],
+      plugins:{legend:{position:'top',labels:{font:{size:10},boxWidth:9,padding:8}}},
+      scales:{x:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'},max:46},
+               y:{ticks:{font:{size:10}},grid:{display:false}}}}});
+});
+
+let cur=1;const tot=10;
+function upd(){
+  document.getElementById('ctr').textContent=cur+' / '+tot;
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('on',i+1===cur));
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i+1===cur));
+}
+function go(d){cur=Math.max(1,Math.min(tot,cur+d));upd();}
+const dotsEl=document.getElementById('dots');
+for(let i=1;i<=tot;i++){const d=document.createElement('div');d.className='dot'+(i===1?' on':'');d.onclick=()=>{cur=i;upd();};dotsEl.appendChild(d);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+</script>
+</body>
+</html>
