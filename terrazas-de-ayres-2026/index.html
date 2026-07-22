@@ -79,6 +79,11 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 .pend-box .pb-txt{font-size:12px;color:var(--txt);line-height:1.6}
 .callout-box{background:#fff3e0;border-left:4px solid var(--am);border-radius:6px;padding:14px 16px;margin-top:16px;font-size:12.5px;color:#7a4e10;line-height:1.55}
 .callout-box strong{color:var(--am)}
+.s5-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media (max-width:680px){
+  .s5-grid{grid-template-columns:1fr;gap:32px}
+  .s5-grid .cw{height:230px!important}
+}
 </style>
 </head>
 <body>
@@ -172,7 +177,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <!-- S5 COMPOSICIÓN EGRESOS -->
 <div class="slide" id="s5">
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
-  <div class="sbody" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+  <div class="sbody s5-grid">
     <div><div class="stitle" style="font-size:14px">Composición de egresos 2025/26</div><div class="cw" style="height:270px"><canvas id="ct"></canvas></div></div>
     <div><div class="stitle" style="font-size:14px">Participación por período (jun-may)</div><div class="cw" style="height:270px"><canvas id="cc"></canvas></div></div>
   </div>
@@ -214,7 +219,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
       <div class="ii"><span class="inum">05</span><span>Cambio de ventanas en guardia</span></div>
       <div class="ii"><span class="inum">06</span><span>4 m³ de piedra dolomita para Parque Central</span></div>
       <div class="ii"><span class="inum">07</span><span>Equipamiento de gimnasio (cables, barra, banco, colchonetas)</span></div>
-      <div class="ii"><span class="inum">08</span><span>Bomba de filtrado de agua de pileta</span></div>
+      <div class="ii"><span class="inum">08</span><span>Nueva bomba de filtrado de agua de pileta</span></div>
       <div class="ii"><span class="inum">09</span><span>Reforma de lavadero (cielorraso, luminarias, agua caliente)</span></div>
       <div class="ii"><span class="inum">10</span><span>Revisión anual de 44 extintores y 2 carros</span></div>
       <div class="ii"><span class="inum">11</span><span>Construcción de portones en accesos secundarios</span></div>
