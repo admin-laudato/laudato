@@ -79,6 +79,15 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 .pend-box .pb-txt{font-size:12px;color:var(--txt);line-height:1.6}
 .callout-box{background:#fff3e0;border-left:4px solid var(--am);border-radius:6px;padding:14px 16px;margin-top:16px;font-size:12.5px;color:#7a4e10;line-height:1.55}
 .callout-box strong{color:var(--am)}
+.ini-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);border-radius:8px;margin-bottom:8px;border-left:3px solid var(--g2)}
+.ini-row.am{border-left-color:var(--am)}
+.ini-name{font-size:13.5px;color:var(--txt);font-weight:500}
+.ini-sub{font-size:10.5px;color:var(--muted);margin-top:2px}
+.stag{font-size:9.5px;font-weight:700;padding:4px 11px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;margin-left:12px}
+.stag.ok{background:#dff0d8;color:#2d5a1e}
+.stag.test{background:#fff3e0;color:#b07828}
+.stag.pending{background:#eef0f5;color:#4a5568}
+.stag.no{background:#f5e0e0;color:#8a2020}
 .s5-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
 @media (max-width:680px){
   .s5-grid{grid-template-columns:1fr;gap:32px}
@@ -189,20 +198,35 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Terrazas de Ayres</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/terrazas-de-ayres-2026/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
     <div class="stitle">Iniciativas extraordinarias del período</div>
-    <div class="obra-highlight">
-      <div class="oc-lbl">Total aprobado / a recaudar</div>
-      <div class="oc-val">$77.293.850</div>
-      <div class="oc-sub">Depósito de ramas, Asfalto, Cocheras, Tarquini y Pañol</div>
+    <div class="ini-row">
+      <div><div class="ini-name">Depósito de ramas</div></div>
+      <span class="stag ok">Realizada</span>
     </div>
-    <div class="obras-grid">
-      <div class="obra-card"><div class="oc-lbl">Depósito de ramas — Realizada</div><div class="oc-val">$5.190.000</div><div class="oc-sub">Aprobada y ejecutada</div></div>
-      <div class="obra-card"><div class="oc-lbl">Asfalto — Realizada</div><div class="oc-val">$8.403.850</div><div class="oc-sub">Aprobada y ejecutada</div></div>
-      <div class="obra-card"><div class="oc-lbl">Cocheras — Realizada</div><div class="oc-val">$4.200.000</div><div class="oc-sub">Aprobada y ejecutada</div></div>
-      <div class="obra-card"><div class="oc-lbl">Tarquini — En prueba</div><div class="oc-val">$27.500.000</div><div class="oc-sub">Aprobada, en etapa de prueba</div></div>
-      <div class="obra-card" style="border-left-color:var(--am)"><div class="oc-lbl">Desvinculación de personal (Acosta)</div><div class="oc-val">$23.378.989</div><div class="oc-sub">Acuerdo homologado · Asamblea Extraordinaria 04/03/2026</div></div>
+    <div class="ini-row">
+      <div><div class="ini-name">Asfalto</div></div>
+      <span class="stag ok">Realizada</span>
     </div>
-    <p class="note">La Pileta ($23.000.000) fue evaluada pero no aprobada en el período. El Pañol ($9.000.000) fue aprobado pero aún no ejecutado — pasa a continuidad de obras del próximo período.</p>
-    <div class="callout-box">La desvinculación de personal (Acosta), aprobada en la Asamblea Extraordinaria del 4 de marzo de 2026, se resolvió mediante acuerdo homologado por $23,3M. Una eventual indemnización sin causa hubiera significado $29,4M por lo que el acuerdo representó un ahorro de $6M (26%) para el barrio.</div>
+    <div class="ini-row">
+      <div><div class="ini-name">Cocheras</div></div>
+      <span class="stag ok">Realizada</span>
+    </div>
+    <div class="ini-row">
+      <div><div class="ini-name">Tarquini</div></div>
+      <span class="stag test">En prueba</span>
+    </div>
+    <div class="ini-row">
+      <div><div class="ini-name">Pañol</div><div class="ini-sub">Pasa a continuidad de obras del próximo período</div></div>
+      <span class="stag pending">Aprobada · Pendiente</span>
+    </div>
+    <div class="ini-row">
+      <div><div class="ini-name">Pileta</div><div class="ini-sub">Evaluada en el período</div></div>
+      <span class="stag no">No aprobada</span>
+    </div>
+    <div class="ini-row am">
+      <div><div class="ini-name">Desvinculación de personal (Acosta)</div><div class="ini-sub">Asamblea Extraordinaria del 04/03/2026</div></div>
+      <span class="stag ok">Aprobada</span>
+    </div>
+    <div class="callout-box">La desvinculación de personal (Acosta), aprobada en la Asamblea Extraordinaria del 4 de marzo de 2026, se resolvió mediante un acuerdo homologado. Una eventual indemnización sin causa hubiera implicado un costo mayor para el barrio, por lo que el acuerdo alcanzado representó un ahorro significativo.</div>
   </div>
 </div>
 
