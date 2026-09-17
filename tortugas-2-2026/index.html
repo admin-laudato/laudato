@@ -72,7 +72,17 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 .rate-card .rc-sub{font-size:10px;color:var(--muted);margin-top:3px}
 .rate-card.accent{border-top-color:var(--am);background:#fdf8f0}
 .rate-card.accent .rc-val{color:var(--am)}
-@media(max-width:640px){.rate-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .rate-grid{grid-template-columns:repeat(2,1fr)}
+  .shd{flex-wrap:wrap;gap:6px;padding:10px 14px}
+  .barrio{order:2;width:100%;text-align:center;padding-top:4px}
+  .qr-sm{order:3}
+  .sbody{padding:18px 16px}
+  .stitle{font-size:15px}
+  .s5-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .s5-grid .stitle{font-size:13px!important}
+  .s5-grid .cw{height:220px!important}
+}
 </style>
 </head>
 <body>
@@ -139,7 +149,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   <div class="sbody">
     <div class="stitle">Resumen financiero — Período 2025/26</div>
     <div class="kpis">
-      <div class="kpi"><div class="lbl">Ingresos totales</div><div class="val">$663,4M</div><div class="sub">$663.444.298</div></div>
+      <div class="kpi"><div class="lbl">Ingresos totales</div><div class="val">$669,2M</div><div class="sub">$669.233.897</div></div>
       <div class="kpi"><div class="lbl">Egresos totales</div><div class="val">$605,5M</div><div class="sub">$605.463.144</div></div>
       <div class="kpi"><div class="lbl">Expensas cobradas</div><div class="val">$524,2M</div><div class="sub">$524.217.788</div></div>
       <div class="kpi"><div class="lbl">Tenencias FCI</div><div class="val">$10,5M</div><div class="sub">Inversión al cierre</div></div>
@@ -164,7 +174,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 <!-- S5 COMPOSICIÓN EGRESOS -->
 <div class="slide" id="s5">
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Condominios Tortugas 2</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/tortugas-2-2026/" alt="QR"><span>VER PPT</span></div></div>
-  <div class="sbody" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+  <div class="sbody s5-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
     <div><div class="stitle" style="font-size:14px">Composición de egresos 2025/26</div><div class="cw" style="height:270px"><canvas id="ct"></canvas></div></div>
     <div><div class="stitle" style="font-size:14px">Participación vs período anterior</div><div class="cw" style="height:270px"><canvas id="cc"></canvas></div></div>
   </div>
@@ -253,7 +263,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
 
 <script>
 const M=["Jul","Ago","Sep","Oct","Nov","Dic","Ene","Feb","Mar","Abr","May","Jun"];
-const ING=[53736714,46848495,50313503,49010313,53854504,55476189,54087297,56868469,60620482,58910539,62268390,61449401];
+const ING=[52393070,46848495,50313503,49010313,53854504,61964718,54087297,56868469,60620482,59555253,62268390,61449401];
 const EGR=[42212350,43619621,50556960,50330614,51822481,48959686,51043614,38156453,46460610,70288469,43324561,68687725];
 const EXP=[35264478,38499522,39881122,41921813,43198148,42627315,44350984,44575947,45607044,48663865,49441557,50185992];
 const MORA=[13,15,14,17,22,19,20,23,25,29,14,17];
@@ -318,7 +328,7 @@ window.addEventListener('load',()=>{
       ]},
     options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
       _diffs:[-2.0,-2.0,3.0,-0.2],
-      plugins:{legend:{position:'top',labels:{font:{size:10},boxWidth:9,padding:8}}},
+      plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12,padding:10}}},
       scales:{x:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'},max:68},
                y:{ticks:{font:{size:10}},grid:{display:false}}}}});
 
