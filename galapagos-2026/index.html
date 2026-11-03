@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asamblea Galápagos 2026 — Laudato Administración</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g1:#2d5a1e;--g2:#4c7a37;--g3:#305c31;--bl:#8ca5af;--bg:#f7f9f5;--border:#d8e8c8;--txt:#1a2a10;--muted:#6a8060;--am:#b07828;--gl:#a8c888}
+html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#eef2ea}
+.pres{max-width:960px;margin:0 auto}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:12px}
+.logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-txt .l1{font-size:11px;font-weight:700;color:var(--g1);letter-spacing:.8px}
+.logo-txt .l2{font-size:9px;color:var(--muted)}
+.dots{display:flex;gap:5px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+.dot.on{background:var(--g1);transform:scale(1.35)}
+.nav-btns{display:flex;gap:8px;align-items:center}
+.nbt{padding:5px 14px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--g1);font-size:12px;cursor:pointer;font-family:inherit}
+.nbt:hover{background:var(--bg)}
+.ctr{font-size:11px;color:var(--muted);white-space:nowrap}
+.slide{display:none;min-height:520px;background:#fff}
+.slide.on{display:block}
+.shd{display:flex;justify-content:space-between;align-items:center;padding:12px 28px;border-bottom:2px solid var(--border)}
+.barrio{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase}
+.sbody{padding:26px 34px}
+.stitle{font-size:17px;font-weight:600;color:var(--g1);margin-bottom:20px}
+.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:460px;text-align:center;background:linear-gradient(150deg,#f5f9f2 0%,#e8f2de 100%);position:relative}
+.cv-yr{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.cv-t{font-size:36px;font-weight:300;color:var(--g1);margin-bottom:6px}
+.cv-s{font-size:18px;color:var(--g2);margin-bottom:24px}
+.cv-div{width:50px;height:2px;background:var(--g2);margin:0 auto 24px}
+.cv-w{font-size:13px;color:var(--muted);font-weight:300}
+.qr-cover{position:absolute;bottom:20px;left:24px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.qr-cover img{width:80px;height:80px;border-radius:6px;border:2px solid var(--border)}
+.qr-cover span{font-size:9px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase}
+.qr-sm{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0}
+.qr-sm img{width:44px;height:44px;border-radius:4px;border:1px solid var(--border)}
+.qr-sm span{font-size:8px;color:var(--muted)}
+.olist{list-style:none}
+.oi{display:flex;align-items:flex-start;gap:14px;padding:11px 0;border-bottom:1px solid var(--bg);font-size:13.5px;color:var(--txt)}
+.oi:last-child{border-bottom:none}
+.onum{min-width:26px;height:26px;background:var(--g1);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+@media(max-width:640px){.kpis{grid-template-columns:1fr}}
+.kpi{background:var(--bg);border-radius:8px;padding:13px 14px;border-left:3px solid var(--g2)}
+.kpi .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:5px}
+.kpi .val{font-size:16px;font-weight:700;color:var(--g1)}
+.kpi .sub{font-size:10px;color:var(--muted);margin-top:2px}
+.good{color:#2a6a2a!important}
+.chart-t{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:10px}
+.cw{position:relative;width:100%}
+.note{font-size:11px;color:var(--muted);margin-top:10px;font-style:italic;line-height:1.55}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.ld{width:10px;height:10px;border-radius:2px}
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:640px){.igrid{grid-template-columns:1fr}}
+.ii{display:flex;gap:9px;align-items:flex-start;padding:9px 11px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--txt);line-height:1.45}
+.inum{font-weight:700;color:var(--g2);min-width:20px;font-size:11px}
+.vbox{border:1.5px solid var(--border);border-radius:12px;padding:26px 30px;max-width:580px;margin:24px auto 0}
+.vtitle{font-size:20px;font-weight:600;color:var(--g1);margin-bottom:18px;text-align:center}
+.vrow{padding:14px 0;border-bottom:1px solid var(--bg)}
+.vrow:last-child{border-bottom:none}
+.vq{font-size:14px;color:var(--txt);display:flex;gap:10px;line-height:1.5}
+.vletter{font-weight:700;color:var(--g2);min-width:18px}
+.rate-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+@media(max-width:640px){.rate-cards{grid-template-columns:repeat(2,1fr)}}
+.rate-card{background:var(--bg);border-radius:8px;padding:14px 16px;text-align:center;border-top:3px solid var(--g2)}
+.rate-card .rc-val{font-size:22px;font-weight:700;color:var(--g1);margin-bottom:2px}
+.rate-card .rc-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.rate-card.highlight{border-top-color:var(--g1);background:#e8f2de}
+.rate-card.warn{border-top-color:#c0392b}
+.rate-card.warn .rc-val{color:#c0392b}
+.highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:640px){.highlights{grid-template-columns:1fr}}
+.hl-card{background:var(--g1);border-radius:10px;padding:16px 18px;color:#fff;font-size:12.5px;line-height:1.5;display:flex;gap:10px;align-items:flex-start}
+.hl-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="logo" viewBox="0 0 310 230">
+    <polygon points="15.5,209 39.5,209 126,59.2 114,38.4" fill="#8ca5af"/>
+    <polygon points="51.5,209 75.5,209 144,90.4 132,69.6" fill="#8ca5af"/>
+    <polygon points="138,59.2 162,59.2 210.4,143 186.4,143" fill="#4c7a37"/>
+    <polygon points="149.6,17 173.6,17 246.4,143 222.4,143" fill="#4c7a37"/>
+    <polygon points="118.7,155 106.6,176 295.4,176 283.3,155" fill="#305c31"/>
+    <polygon points="99.6,188 87.5,209 284.5,209 272.4,188" fill="#305c31"/>
+  </symbol>
+</svg>
+
+<div class="pres">
+<nav class="nav">
+  <div class="logo-wrap"><svg width="44" height="33" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div>
+  <div class="dots" id="dots"></div>
+  <div class="nav-btns">
+    <span class="ctr" id="ctr">1 / 7</span>
+    <button class="nbt" onclick="go(-1)">← Ant.</button>
+    <button class="nbt" onclick="go(1)">Sig. →</button>
+  </div>
+</nav>
+
+<!-- S1 PORTADA -->
+<div class="slide on" id="s1">
+  <div class="shd"><div></div><div class="barrio">Galápagos</div></div>
+  <div class="cover">
+    <svg width="90" height="68" viewBox="0 0 310 230" style="margin-bottom:18px"><use href="#logo"/></svg>
+    <div class="cv-yr">Rendición de Cuentas 2026</div>
+    <div class="cv-t">Galápagos</div>
+    <div class="cv-s">Asamblea Ordinaria</div>
+    <div class="cv-div"></div>
+    <div class="cv-w">Bienvenidos</div>
+    <div class="qr-cover">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR">
+      <span>Escaneá para ver</span>
+    </div>
+  </div>
+</div>
+
+<!-- S2 ORDEN DEL DÍA -->
+<div class="slide" id="s2">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Orden del día</div>
+    <ol class="olist">
+      <li class="oi"><span class="onum">1</span><span>Constitución legal de la Asamblea</span></li>
+      <li class="oi"><span class="onum">2</span><span>Designación de dos copropietarios para firmar el Acta</span></li>
+      <li class="oi"><span class="onum">3</span><span>Designación del Presidente de la Asamblea</span></li>
+      <li class="oi"><span class="onum">4</span><span>Aprobación de la Gestión y rendición de cuentas del período</span></li>
+      <li class="oi"><span class="onum">5</span><span>Estado de Juicios y/o Morosidad</span></li>
+      <li class="oi"><span class="onum">6</span><span>Aprobación de la continuidad de la Administración</span></li>
+      <li class="oi"><span class="onum">7</span><span>Análisis del plan de mantenimiento del próximo período</span></li>
+      <li class="oi"><span class="onum">8</span><span>Elección del Consejo de Propietarios</span></li>
+    </ol>
+  </div>
+</div>
+
+<!-- S3 RESUMEN FINANCIERO -->
+<div class="slide" id="s3">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Resumen financiero del período</div>
+    <div class="kpis">
+      <div class="kpi"><div class="lbl">Ingresos totales</div><div class="val">$1.961,4M</div><div class="sub">$1.961.411.503</div></div>
+      <div class="kpi"><div class="lbl">Egresos totales</div><div class="val">$1.877,4M</div><div class="sub">$1.877.383.390</div></div>
+      <div class="kpi" style="border-left-color:#2a6a2a"><div class="lbl">Tenencias FCI al cierre</div><div class="val good">$205,1M</div><div class="sub">$205.148.003</div></div>
+    </div>
+    <div class="chart-t">Evolución de ingresos y egresos del período</div>
+    <div class="leg"><div class="li"><div class="ld" style="background:#4c7a37"></div>Ingresos</div><div class="li"><div class="ld" style="background:#c0392b"></div>Egresos</div></div>
+    <div class="cw" style="height:250px"><canvas id="cf"></canvas></div>
+    <p class="note">Los ingresos y egresos evolucionan en equilibrio a lo largo del período. En diciembre arrancó la expensa extraordinaria por SUM.</p>
+  </div>
+</div>
+
+<!-- S4 COMPOSICIÓN EGRESOS -->
+<div class="slide" id="s4">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Composición de egresos del período</div>
+    <div style="max-width:420px;margin:0 auto">
+      <div class="cw" style="height:320px"><canvas id="ct"></canvas></div>
+    </div>
+    <p class="note">Seguridad representa el 42% del total de egresos, seguido por Abonos y Honorarios (13,8%) y Costo Laboral (12,8%).</p>
+  </div>
+</div>
+
+<!-- S5 EXPENSAS VS INFLACIÓN -->
+<div class="slide" id="s5">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Expensas vs Inflación</div>
+    <div class="rate-cards">
+      <div class="rate-card warn"><div class="rc-val">37,1%</div><div class="rc-lbl">Edenor</div></div>
+      <div class="rate-card"><div class="rc-val">33,5%</div><div class="rc-lbl">Inflación IPC</div></div>
+      <div class="rate-card highlight"><div class="rc-val">25,8%</div><div class="rc-lbl">Expensas</div></div>
+      <div class="rate-card highlight"><div class="rc-val">23,6%</div><div class="rc-lbl">Seg. Paritaria</div></div>
+    </div>
+    <div class="cw" style="height:220px"><canvas id="cr"></canvas></div>
+    <p class="note">La suba de expensas del 25,8% se ubicó por debajo de la inflación acumulada del 33,5% en el período, demostrando eficiencia en la gestión de costos.</p>
+  </div>
+</div>
+
+<!-- S6 OBRAS Y MEJORAS -->
+<div class="slide" id="s6">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Obras y mejoras del período</div>
+    <div class="highlights">
+      <div class="hl-card"><span class="hl-icon">🛡️</span><span>Se sumaron <strong>64hs de 2da cabina de registración</strong> en la guardia, para acelerar el ingreso al barrio</span></div>
+      <div class="hl-card"><span class="hl-icon">🌳</span><span><strong>Deforestación integral:</strong> poda de 48 fresnos y 40 plátanos, extracción de 35 árboles, plantación de 43 ejemplares nuevos</span></div>
+      <div class="hl-card"><span class="hl-icon">⚖️</span><span>Se armaron <strong>acuerdos conciliatorios</strong> con deudores para evitar ir a juicio</span></div>
+    </div>
+    <div class="igrid">
+      <div class="ii"><span class="inum">01</span><span>Puesta en valor integral sector pileta — $42,3M</span></div>
+      <div class="ii"><span class="inum">02</span><span>Obra de bacheo vial integral — $100,8M</span></div>
+      <div class="ii"><span class="inum">03</span><span>Colocación 420m concertina calle Corona Golf</span></div>
+      <div class="ii"><span class="inum">04</span><span>Servicio de guardavidas temporada (Dic–Mar)</span></div>
+      <div class="ii"><span class="inum">05</span><span>Poda de 48 fresnos americanos</span></div>
+      <div class="ii"><span class="inum">06</span><span>Poda formativa de 40 plátanos</span></div>
+      <div class="ii"><span class="inum">07</span><span>Renovación señalización vial — 14 carteles</span></div>
+      <div class="ii"><span class="inum">08</span><span>Reparación red cloacal troncales lotes 17 y 43</span></div>
+      <div class="ii"><span class="inum">09</span><span>Relevamiento técnico edificio Club House</span></div>
+      <div class="ii"><span class="inum">10</span><span>Reparación bomba cloacal</span></div>
+      <div class="ii"><span class="inum">11</span><span>Colocación 2 medidores de agua</span></div>
+      <div class="ii"><span class="inum">12</span><span>Monitor y TV para cámaras en acceso</span></div>
+      <div class="ii"><span class="inum">13</span><span>Resiembra canchas y espacios verdes</span></div>
+      <div class="ii"><span class="inum">14</span><span>Cerramiento sector volquetes estacionamiento</span></div>
+      <div class="ii"><span class="inum">15</span><span>Tobogán plaza de juegos + tablero de básquet</span></div>
+      <div class="ii"><span class="inum">16</span><span>Plantación de 30 olmos, 10 fresnos, 3 capalbas</span></div>
+      <div class="ii"><span class="inum">17</span><span>Extracción de 35 árboles con retiro</span></div>
+      <div class="ii"><span class="inum">18</span><span>Reordenamiento SUM — confección planos municipales</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- S7 VOTACIÓN -->
+<div class="slide" id="s7">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="vbox">
+      <div class="vtitle">Votación</div>
+      <div class="vrow"><div class="vq"><span class="vletter">a)</span><span>Aprobación de la Gestión y rendición de cuentas del período</span></div></div>
+      <div class="vrow"><div class="vq"><span class="vletter">b)</span><span>Aprobación de la continuidad de la Administración</span></div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const M=["Sep","Oct","Nov","Dic","Ene","Feb","Mar","Abr","May","Jun","Jul","Ago"];
+const ING=[134381336,125817421,128623634,148852499,145441198,158534414,176150703,163354544,184298338,181222114,214306145,200429157];
+const EGR=[131758947,154401060,209375672,132425332,143053199,137942683,139796033,156855978,139149404,176517659,183062319,173045105];
+const G1='#2d5a1e',G2='#4c7a37',GL='#a8c888',BL='#8ca5af',AM='#b07828';
+
+const annotPlugin={id:'annot',afterDraw(chart){
+  if(!chart.config.options._annot)return;
+  const {ctx,chartArea:{top,bottom}}=chart,a=chart.config.options._annot;
+  const meta=chart.getDatasetMeta(0),pt=meta.data[a.index];if(!pt)return;
+  ctx.save();ctx.strokeStyle='#b07828';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);
+  ctx.beginPath();ctx.moveTo(pt.x,top);ctx.lineTo(pt.x,bottom);ctx.stroke();ctx.setLineDash([]);
+  ctx.font='600 9px system-ui';ctx.fillStyle='#b07828';ctx.textAlign='center';
+  ctx.fillText(a.label,pt.x,top-4);ctx.restore();
+}};
+Chart.register(annotPlugin);
+
+window.addEventListener('load',()=>{
+  /* Flujo mensual */
+  new Chart(document.getElementById('cf'),{type:'line',
+    data:{labels:M,datasets:[
+      {label:'Ingresos',data:ING,borderColor:G2,backgroundColor:G2+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2},
+      {label:'Egresos',data:EGR,borderColor:'#c0392b',backgroundColor:'#c0392b28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      _annot:{index:3,label:'Inicio exp. extra SUM'},
+      layout:{padding:{top:16}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},
+      scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},
+               x:{ticks:{font:{size:10}},grid:{display:false}}}}});
+
+  /* Doughnut egresos */
+  new Chart(document.getElementById('ct'),{type:'doughnut',
+    data:{labels:['Seguridad 42,0%','Abonos y Hon. 13,8%','Costo Laboral 12,8%','Mantenimiento 11,4%','Extra (Bacheo) 5,7%','Aysa 3,8%','Servicios 3,6%','Otros 6,8%'],
+      datasets:[{data:[787591256,260024973,241198015,214145446,107944886,71482683,67531562,127464569],
+        backgroundColor:[G1,BL,'#8a6a30',GL,AM,'#5b8fa8','#9a7ab0','#bbb'],borderWidth:2,borderColor:'#fff',hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'55%',
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:7,boxWidth:9}}}}});
+
+  /* Rates bar chart */
+  new Chart(document.getElementById('cr'),{type:'bar',
+    data:{labels:['Edenor','Inflación IPC','Expensas','Seg. Paritaria'],
+      datasets:[{data:[37.1,33.5,25.8,23.6],
+        backgroundColor:['#c0392b',BL,G1,G2],borderRadius:4,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:c=>c.raw+'%'}}},
+      scales:{x:{ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f0f0f0'},max:45},
+               y:{ticks:{font:{size:11,weight:'bold'}},grid:{display:false}}}}});
+});
+
+let cur=1;const tot=7;
+function upd(){
+  document.getElementById('ctr').textContent=cur+' / '+tot;
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('on',i+1===cur));
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i+1===cur));
+}
+function go(d){cur=Math.max(1,Math.min(tot,cur+d));upd();}
+const dotsEl=document.getElementById('dots');
+for(let i=1;i<=tot;i++){const d=document.createElement('div');d.className='dot'+(i===1?' on':'');d.onclick=()=>{cur=i;upd();};dotsEl.appendChild(d);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+</script>
+</body>
+</html>
