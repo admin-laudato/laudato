@@ -152,8 +152,9 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
       <li class="oi"><span class="onum">4</span><span>Aprobación de la Gestión y rendición de cuentas del período</span></li>
       <li class="oi"><span class="onum">5</span><span>Estado de Juicios y/o Morosidad</span></li>
       <li class="oi"><span class="onum">6</span><span>Aprobación de la continuidad de la Administración</span></li>
-      <li class="oi"><span class="onum">7</span><span>Análisis del plan de mantenimiento del próximo período</span></li>
-      <li class="oi"><span class="onum">8</span><span>Elección del Consejo de Propietarios</span></li>
+      <li class="oi"><span class="onum">7</span><span>Análisis y aprobación del plan de obras del próximo período</span></li>
+      <li class="oi"><span class="onum">8</span><span>Estado de morosidad</span></li>
+      <li class="oi"><span class="onum">9</span><span>Elección del Consejo de Propietarios</span></li>
     </ol>
   </div>
 </div>
@@ -183,35 +184,50 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     <div style="max-width:420px;margin:0 auto">
       <div class="cw" style="height:320px"><canvas id="ct"></canvas></div>
     </div>
-    <p class="note">Seguridad representa el 42% del total de egresos, seguido por Abonos y Honorarios (14%) y Costo Laboral (13%). Datos de la hoja Resumen del Excel de Asamblea 2026.</p>
+    <p class="note">Acuerdos conciliatorios, reordenamiento SUM y bacheo son gastos extraordinarios que representaron un 9% del total de los gastos del período.</p>
   </div>
 </div>
 
-<!-- S5 EXPENSAS VS INFLACIÓN -->
+<!-- S5 COMPARATIVA EXPENSAS -->
 <div class="slide" id="s5">
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
-    <div class="stitle">Expensas vs Inflación</div>
-    <div class="rate-cards">
-      <div class="rate-card warn"><div class="rc-val">37,1%</div><div class="rc-lbl">Edenor</div></div>
-      <div class="rate-card"><div class="rc-val">33,5%</div><div class="rc-lbl">Inflación IPC</div></div>
-      <div class="rate-card highlight"><div class="rc-val">25,8%</div><div class="rc-lbl">Expensas</div></div>
-      <div class="rate-card highlight"><div class="rc-val">23,6%</div><div class="rc-lbl">Seg. Paritaria</div></div>
+    <div class="stitle">Comparativa expensas vs otros indicadores</div>
+    <div class="rate-cards" style="grid-template-columns:repeat(3,1fr)">
+      <div class="rate-card highlight"><div class="rc-val">27,01%</div><div class="rc-lbl">Expensas Comunes</div></div>
+      <div class="rate-card" style="border-top-color:#b07828"><div class="rc-val" style="color:#b07828">9%</div><div class="rc-lbl">Gastos Extras</div></div>
+      <div class="rate-card"><div class="rc-val">29,3%</div><div class="rc-lbl">Inflación IPC</div></div>
     </div>
-    <div class="cw" style="height:220px"><canvas id="cr"></canvas></div>
-    <p class="note">La suba de expensas del 25,8% se ubicó por debajo de la inflación acumulada del 33,5% en el período, demostrando eficiencia en la gestión de costos.</p>
+    <div class="cw" style="height:200px"><canvas id="cr"></canvas></div>
+    <p class="note">Seguridad y Sueldos (Costo Laboral) fueron el 55% de los egresos, mientras que la expensa, sin los gastos extraordinarios, se mantuvo por debajo de la inflación del período. Los gastos extras corresponden a bacheo, reordenamiento SUM y acuerdos conciliatorios.</p>
   </div>
 </div>
 
-<!-- S6 OBRAS Y MEJORAS -->
+<!-- S6 MOROSIDAD -->
 <div class="slide" id="s6">
+  <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
+  <div class="sbody">
+    <div class="stitle">Morosidad — Ratio sobre una expensa</div>
+    <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
+      <div class="kpi"><div class="lbl">Promedio del período</div><div class="val">37,6%</div><div class="sub">de una expensa mensual</div></div>
+      <div class="kpi" style="border-left-color:#2a6a2a"><div class="lbl">Mejor mes (Jul)</div><div class="val good">27,0%</div></div>
+      <div class="kpi" style="border-left-color:#b07828"><div class="lbl">Pico (Feb)</div><div class="val" style="color:#b07828">44,3%</div></div>
+    </div>
+    <div class="chart-t">Evolución mensual de morosidad (% de una expensa)</div>
+    <div class="cw" style="height:230px"><canvas id="cm"></canvas></div>
+    <p class="note">La morosidad se mantuvo controlada a lo largo del período, incluso durante los meses en que se exigieron expensas extraordinarias (SUM, bacheo, acuerdos). El ratio cerró en 31,5%, por debajo del promedio.</p>
+  </div>
+</div>
+
+<!-- S7 OBRAS Y MEJORAS -->
+<div class="slide" id="s7">
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
     <div class="stitle">Obras y mejoras del período</div>
     <div class="highlights">
-      <div class="hl-card"><span class="hl-icon">🛡️</span><span>Se sumaron <strong>64hs de 2da cabina de registración</strong> en la guardia, para acelerar el ingreso al barrio</span></div>
-      <div class="hl-card"><span class="hl-icon">🌳</span><span><strong>Deforestación integral:</strong> poda de 48 fresnos y 40 plátanos, extracción de 35 árboles, plantación de 43 ejemplares nuevos</span></div>
-      <div class="hl-card"><span class="hl-icon">⚖️</span><span>Se armaron <strong>acuerdos conciliatorios</strong> con deudores para evitar ir a juicio</span></div>
+      <div class="hl-card"><span class="hl-icon">🛡️</span><span>Se sumaron <strong>64hs de 2da cabina de registración</strong> en la guardia, para acelerar el ingreso al barrio los fines de semana</span></div>
+      <div class="hl-card"><span class="hl-icon">🌳</span><span><strong>Plan de Paisajismo:</strong> poda de 48 fresnos y 40 plátanos, extracción de 35 árboles, plantación de 43 ejemplares nuevos</span></div>
+      <div class="hl-card"><span class="hl-icon">⚖️</span><span>Se cerraron <strong>acuerdos conciliatorios</strong> por reclamos judiciales de ex empleados de contratistas que hacían juicio al barrio</span></div>
     </div>
     <div class="igrid">
       <div class="ii"><span class="inum">01</span><span>Puesta en valor integral sector pileta — $42,3M</span></div>
@@ -236,8 +252,8 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   </div>
 </div>
 
-<!-- S7 PLAN DE OBRAS -->
-<div class="slide" id="s7">
+<!-- S8 PLAN DE OBRAS -->
+<div class="slide" id="s8">
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
     <div class="stitle">Plan de obras — Puesta en valor plaza de juegos</div>
@@ -267,8 +283,8 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   </div>
 </div>
 
-<!-- S8 VOTACIÓN GESTIÓN -->
-<div class="slide" id="s8">
+<!-- S9 VOTACIÓN GESTIÓN -->
+<div class="slide" id="s9">
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
     <div class="vbox">
@@ -280,8 +296,8 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   </div>
 </div>
 
-<!-- S9 CIERRE -->
-<div class="slide" id="s9">
+<!-- S10 CIERRE -->
+<div class="slide" id="s10">
   <div class="shd"><div></div><div class="barrio">Galápagos</div></div>
   <div class="cover">
     <svg width="90" height="68" viewBox="0 0 310 230" style="margin-bottom:18px"><use href="#logo"/></svg>
@@ -337,18 +353,37 @@ window.addEventListener('load',()=>{
       plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:7,boxWidth:9}}}}});
 
   /* Rates bar chart */
+  /* Comparativa expensas stacked */
   new Chart(document.getElementById('cr'),{type:'bar',
-    data:{labels:['Edenor','Inflación IPC','Expensas','Seg. Paritaria'],
-      datasets:[{data:[37.1,33.5,25.8,23.6],
-        backgroundColor:['#c0392b',BL,G1,G2],borderRadius:4,borderWidth:0}]},
-    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
-      plugins:{legend:{display:false},
-        tooltip:{callbacks:{label:c=>c.raw+'%'}}},
-      scales:{x:{ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f0f0f0'},max:45},
-               y:{ticks:{font:{size:11,weight:'bold'}},grid:{display:false}}}}});
+    data:{labels:['Expensas','Inflación IPC'],
+      datasets:[
+        {label:'Exp. Comunes',data:[27.01,29.3],backgroundColor:[G1,BL],borderWidth:0},
+        {label:'Gastos Extras (Bacheo, SUM, Acuerdos)',data:[9,0],backgroundColor:AM,borderWidth:0}
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',barThickness:36,
+      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:10,
+        generateLabels:chart=>[
+          {text:'Exp. Comunes (27,01%)',fillStyle:G1,strokeStyle:G1,lineWidth:0},
+          {text:'Gastos Extras (9%)',fillStyle:AM,strokeStyle:AM,lineWidth:0},
+          {text:'Inflación IPC (29,3%)',fillStyle:BL,strokeStyle:BL,lineWidth:0}
+        ]}},
+        tooltip:{callbacks:{label:c=>{if(!c.raw)return '';
+          if(c.datasetIndex===0)return c.label+': '+c.raw+'%';
+          return 'Gastos Extras: '+c.raw+'%'}}}},
+      scales:{x:{stacked:true,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f0f0f0'},max:42},
+               y:{stacked:true,ticks:{font:{size:12,weight:'bold'}},grid:{display:false}}}}});
+
+  /* Morosidad line chart */
+  new Chart(document.getElementById('cm'),{type:'line',
+    data:{labels:M,datasets:[{label:'Morosidad',data:[38.1,38.2,37.8,32.2,40.4,44.3,37.5,43.6,39.8,41.0,27.0,31.5],
+      borderColor:AM,backgroundColor:AM+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+'%'}}},
+      scales:{y:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'},min:15,max:55},
+               x:{ticks:{font:{size:10}},grid:{display:false}}}}});
 });
 
-let cur=1;const tot=9;
+let cur=1;const tot=10;
 function upd(){
   document.getElementById('ctr').textContent=cur+' / '+tot;
   document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('on',i+1===cur));
