@@ -193,10 +193,12 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   <div class="shd"><div class="logo-wrap"><svg width="34" height="26" viewBox="0 0 310 230"><use href="#logo"/></svg><div class="logo-txt"><div class="l1">LAUDATO</div><div class="l2">Administración</div></div></div><div class="barrio">Galápagos</div><div class="qr-sm"><img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=https://admin-laudato.github.io/laudato/galapagos-2026/" alt="QR"><span>VER PPT</span></div></div>
   <div class="sbody">
     <div class="stitle">Comparativa expensas vs otros indicadores</div>
-    <div class="rate-cards" style="grid-template-columns:repeat(3,1fr)">
+    <div class="rate-cards" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">
       <div class="rate-card highlight"><div class="rc-val">27,01%</div><div class="rc-lbl">Expensas Comunes</div></div>
       <div class="rate-card" style="border-top-color:#b07828"><div class="rc-val" style="color:#b07828">9%</div><div class="rc-lbl">Gastos Extras</div></div>
       <div class="rate-card"><div class="rc-val">29,3%</div><div class="rc-lbl">Inflación IPC</div></div>
+      <div class="rate-card warn"><div class="rc-val">37,1%</div><div class="rc-lbl">Edenor</div></div>
+      <div class="rate-card"><div class="rc-val">23,6%</div><div class="rc-lbl">Seg. Paritaria</div></div>
     </div>
     <div class="cw" style="height:200px"><canvas id="cr"></canvas></div>
     <p class="note">Seguridad y Sueldos (Costo Laboral) fueron el 55% de los egresos, mientras que la expensa, sin los gastos extraordinarios, se mantuvo por debajo de la inflación del período. Los gastos extras corresponden a bacheo, reordenamiento SUM y acuerdos conciliatorios.</p>
@@ -227,7 +229,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     <div class="highlights">
       <div class="hl-card"><span class="hl-icon">🛡️</span><span>Se sumaron <strong>64hs de 2da cabina de registración</strong> en la guardia, para acelerar el ingreso al barrio los fines de semana</span></div>
       <div class="hl-card"><span class="hl-icon">🌳</span><span><strong>Plan de Paisajismo:</strong> poda de 48 fresnos y 40 plátanos, extracción de 35 árboles, plantación de 43 ejemplares nuevos</span></div>
-      <div class="hl-card"><span class="hl-icon">⚖️</span><span>Se cerraron <strong>acuerdos conciliatorios</strong> por reclamos judiciales de ex empleados de contratistas que hacían juicio al barrio</span></div>
+      <div class="hl-card"><span class="hl-icon">⚖️</span><span>Se cerraron <strong>acuerdos conciliatorios</strong> por reclamos judiciales</span></div>
     </div>
     <div class="igrid">
       <div class="ii"><span class="inum">01</span><span>Puesta en valor integral sector pileta — $42,3M</span></div>
@@ -355,31 +357,33 @@ window.addEventListener('load',()=>{
   /* Rates bar chart */
   /* Comparativa expensas stacked */
   new Chart(document.getElementById('cr'),{type:'bar',
-    data:{labels:['Expensas','Inflación IPC'],
+    data:{labels:['Expensas','Inflación IPC','Edenor','Seg. Paritaria'],
       datasets:[
-        {label:'Exp. Comunes',data:[27.01,29.3],backgroundColor:[G1,BL],borderWidth:0},
-        {label:'Gastos Extras (Bacheo, SUM, Acuerdos)',data:[9,0],backgroundColor:AM,borderWidth:0}
+        {label:'Exp. Comunes',data:[27.01,0,0,0],backgroundColor:G1,borderWidth:0},
+        {label:'Gastos Extras',data:[9,0,0,0],backgroundColor:AM,borderWidth:0},
+        {label:'Indicador',data:[0,29.3,37.1,23.6],backgroundColor:[,BL,'#c0392b',G2],borderWidth:0}
       ]},
-    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',barThickness:36,
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',barThickness:30,
       plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:10,
-        generateLabels:chart=>[
+        generateLabels:()=>[
           {text:'Exp. Comunes (27,01%)',fillStyle:G1,strokeStyle:G1,lineWidth:0},
-          {text:'Gastos Extras (9%)',fillStyle:AM,strokeStyle:AM,lineWidth:0},
-          {text:'Inflación IPC (29,3%)',fillStyle:BL,strokeStyle:BL,lineWidth:0}
+          {text:'Gastos Extras (9%)',fillStyle:AM,strokeStyle:AM,lineWidth:0}
         ]}},
         tooltip:{callbacks:{label:c=>{if(!c.raw)return '';
-          if(c.datasetIndex===0)return c.label+': '+c.raw+'%';
-          return 'Gastos Extras: '+c.raw+'%'}}}},
-      scales:{x:{stacked:true,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f0f0f0'},max:42},
-               y:{stacked:true,ticks:{font:{size:12,weight:'bold'}},grid:{display:false}}}}});
+          if(c.datasetIndex===0)return 'Exp. Comunes: '+c.raw+'%';
+          if(c.datasetIndex===1)return 'Gastos Extras: '+c.raw+'%';
+          return c.label+': '+c.raw+'%'}}}},
+      scales:{x:{stacked:true,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f0f0f0'},max:45},
+               y:{stacked:true,ticks:{font:{size:11,weight:'bold'}},grid:{display:false}}}}});
 
-  /* Morosidad line chart */
-  new Chart(document.getElementById('cm'),{type:'line',
+  /* Morosidad bar chart */
+  new Chart(document.getElementById('cm'),{type:'bar',
     data:{labels:M,datasets:[{label:'Morosidad',data:[38.1,38.2,37.8,32.2,40.4,44.3,37.5,43.6,39.8,41.0,27.0,31.5],
-      borderColor:AM,backgroundColor:AM+'28',fill:true,tension:.3,pointRadius:3,borderWidth:2}]},
+      backgroundColor:M.map((_,i)=>[38.1,38.2,37.8,32.2,40.4,44.3,37.5,43.6,39.8,41.0,27.0,31.5][i]>40?AM:G2),
+      borderRadius:4,borderWidth:0}]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw+'%'}}},
-      scales:{y:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'},min:15,max:55},
+      scales:{y:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f0f0f0'},min:0,max:55},
                x:{ticks:{font:{size:10}},grid:{display:false}}}}});
 });
 
