@@ -153,8 +153,7 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
       <li class="oi"><span class="onum">5</span><span>Estado de Juicios y/o Morosidad</span></li>
       <li class="oi"><span class="onum">6</span><span>Aprobación de la continuidad de la Administración</span></li>
       <li class="oi"><span class="onum">7</span><span>Análisis y aprobación del plan de obras del próximo período</span></li>
-      <li class="oi"><span class="onum">8</span><span>Estado de morosidad</span></li>
-      <li class="oi"><span class="onum">9</span><span>Elección del Consejo de Propietarios</span></li>
+      <li class="oi"><span class="onum">8</span><span>Elección del Consejo de Propietarios</span></li>
     </ol>
   </div>
 </div>
@@ -194,14 +193,15 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
   <div class="sbody">
     <div class="stitle">Comparativa expensas vs otros indicadores</div>
     <div class="rate-cards" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">
-      <div class="rate-card highlight"><div class="rc-val">27,01%</div><div class="rc-lbl">Expensas Comunes</div></div>
-      <div class="rate-card" style="border-top-color:#b07828"><div class="rc-val" style="color:#b07828">9%</div><div class="rc-lbl">Gastos Extras</div></div>
-      <div class="rate-card"><div class="rc-val">29,3%</div><div class="rc-lbl">Inflación IPC</div></div>
+      <div class="rate-card highlight"><div class="rc-val">29,4%</div><div class="rc-lbl">Exp. Ordinarias</div></div>
+      <div class="rate-card" style="border-top-color:#b07828"><div class="rc-val" style="color:#b07828">8,7%</div><div class="rc-lbl">Exp. Extraordinarias</div></div>
+      <div class="rate-card"><div class="rc-val">38,1%</div><div class="rc-lbl">Expensas Total</div></div>
+      <div class="rate-card"><div class="rc-val">33,5%</div><div class="rc-lbl">Inflación IPC</div></div>
       <div class="rate-card warn"><div class="rc-val">37,1%</div><div class="rc-lbl">Edenor</div></div>
       <div class="rate-card"><div class="rc-val">23,6%</div><div class="rc-lbl">Seg. Paritaria</div></div>
     </div>
     <div class="cw" style="height:200px"><canvas id="cr"></canvas></div>
-    <p class="note">Seguridad y Sueldos (Costo Laboral) fueron el 55% de los egresos, mientras que la expensa, sin los gastos extraordinarios, se mantuvo por debajo de la inflación del período. Los gastos extras corresponden a bacheo, reordenamiento SUM y acuerdos conciliatorios.</p>
+    <p class="note">Seguridad y Sueldos (Costo Laboral) fueron el 55% de los egresos, mientras que la expensa ordinaria (29,4%) se mantuvo por debajo de la inflación del período (33,5%). Los gastos extras corresponden a bacheo, reordenamiento SUM y acuerdos conciliatorios.</p>
   </div>
 </div>
 
@@ -323,12 +323,15 @@ const G1='#2d5a1e',G2='#4c7a37',GL='#a8c888',BL='#8ca5af',AM='#b07828';
 
 const annotPlugin={id:'annot',afterDraw(chart){
   if(!chart.config.options._annot)return;
-  const {ctx,chartArea:{top,bottom}}=chart,a=chart.config.options._annot;
-  const meta=chart.getDatasetMeta(0),pt=meta.data[a.index];if(!pt)return;
-  ctx.save();ctx.strokeStyle='#b07828';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);
-  ctx.beginPath();ctx.moveTo(pt.x,top);ctx.lineTo(pt.x,bottom);ctx.stroke();ctx.setLineDash([]);
-  ctx.font='600 9px system-ui';ctx.fillStyle='#b07828';ctx.textAlign='center';
-  ctx.fillText(a.label,pt.x,top-4);ctx.restore();
+  const arr=Array.isArray(chart.config.options._annot)?chart.config.options._annot:[chart.config.options._annot];
+  const {ctx,chartArea:{top,bottom}}=chart;
+  arr.forEach(a=>{
+    const meta=chart.getDatasetMeta(0),pt=meta.data[a.index];if(!pt)return;
+    ctx.save();ctx.strokeStyle='#b07828';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);
+    ctx.beginPath();ctx.moveTo(pt.x,top);ctx.lineTo(pt.x,bottom);ctx.stroke();ctx.setLineDash([]);
+    ctx.font='600 9px system-ui';ctx.fillStyle='#b07828';ctx.textAlign='center';
+    ctx.fillText(a.label,pt.x,top-4);ctx.restore();
+  });
 }};
 Chart.register(annotPlugin);
 
@@ -340,7 +343,7 @@ window.addEventListener('load',()=>{
       {label:'Egresos',data:EGR,borderColor:'#c0392b',backgroundColor:'#c0392b28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      _annot:{index:3,label:'Inicio exp. extra SUM'},
+      _annot:[{index:1,label:'Inicio cuotas bacheo'},{index:3,label:'Inicio exp. extra SUM'}],
       layout:{padding:{top:16}},
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},
       scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},
@@ -359,19 +362,19 @@ window.addEventListener('load',()=>{
   new Chart(document.getElementById('cr'),{type:'bar',
     data:{labels:['Expensas','Inflación IPC','Edenor','Seg. Paritaria'],
       datasets:[
-        {label:'Exp. Comunes',data:[27.01,0,0,0],backgroundColor:G1,borderWidth:0},
-        {label:'Gastos Extras',data:[9,0,0,0],backgroundColor:AM,borderWidth:0},
-        {label:'Indicador',data:[0,29.3,37.1,23.6],backgroundColor:[,BL,'#c0392b',G2],borderWidth:0}
+        {label:'Ordinarias',data:[29.4,0,0,0],backgroundColor:G1,borderWidth:0},
+        {label:'Extraordinarias',data:[8.7,0,0,0],backgroundColor:AM,borderWidth:0},
+        {label:'Indicador',data:[0,33.5,37.1,23.6],backgroundColor:[,BL,'#c0392b',G2],borderWidth:0}
       ]},
     options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',barThickness:30,
       plugins:{legend:{display:true,position:'bottom',labels:{font:{size:10},boxWidth:10,
         generateLabels:()=>[
-          {text:'Exp. Comunes (27,01%)',fillStyle:G1,strokeStyle:G1,lineWidth:0},
-          {text:'Gastos Extras (9%)',fillStyle:AM,strokeStyle:AM,lineWidth:0}
+          {text:'Exp. Ordinarias (29,4%)',fillStyle:G1,strokeStyle:G1,lineWidth:0},
+          {text:'Exp. Extraordinarias (8,7%)',fillStyle:AM,strokeStyle:AM,lineWidth:0}
         ]}},
         tooltip:{callbacks:{label:c=>{if(!c.raw)return '';
-          if(c.datasetIndex===0)return 'Exp. Comunes: '+c.raw+'%';
-          if(c.datasetIndex===1)return 'Gastos Extras: '+c.raw+'%';
+          if(c.datasetIndex===0)return 'Exp. Ordinarias: '+c.raw+'%';
+          if(c.datasetIndex===1)return 'Exp. Extraordinarias: '+c.raw+'%';
           return c.label+': '+c.raw+'%'}}}},
       scales:{x:{stacked:true,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f0f0f0'},max:45},
                y:{stacked:true,ticks:{font:{size:11,weight:'bold'}},grid:{display:false}}}}});
