@@ -342,8 +342,8 @@ window.addEventListener('load',()=>{
       {label:'Egresos',data:EGR,borderColor:'#c0392b',backgroundColor:'#c0392b28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      _annot:[{index:1,label:'Inicio bacheo',offsetY:-10},{index:3,label:'Inicio exp. extra SUM'}],
-      layout:{padding:{top:16}},
+      _annot:[{index:1,label:'Inicio bacheo'},{index:3,label:'Inicio exp. extra SUM'}],
+      layout:{padding:{top:22}},
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},
       scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},
                x:{ticks:{font:{size:10}},grid:{display:false}}}}});
