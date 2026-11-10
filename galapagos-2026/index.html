@@ -195,7 +195,6 @@ html,body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#
     <div class="rate-cards" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">
       <div class="rate-card highlight"><div class="rc-val">29,4%</div><div class="rc-lbl">Exp. Ordinarias</div></div>
       <div class="rate-card" style="border-top-color:#b07828"><div class="rc-val" style="color:#b07828">8,7%</div><div class="rc-lbl">Exp. Extraordinarias</div></div>
-      <div class="rate-card"><div class="rc-val">38,1%</div><div class="rc-lbl">Expensas Total</div></div>
       <div class="rate-card"><div class="rc-val">33,5%</div><div class="rc-lbl">Inflación IPC</div></div>
       <div class="rate-card warn"><div class="rc-val">37,1%</div><div class="rc-lbl">Edenor</div></div>
       <div class="rate-card"><div class="rc-val">23,6%</div><div class="rc-lbl">Seg. Paritaria</div></div>
@@ -329,8 +328,8 @@ const annotPlugin={id:'annot',afterDraw(chart){
     const meta=chart.getDatasetMeta(0),pt=meta.data[a.index];if(!pt)return;
     ctx.save();ctx.strokeStyle='#b07828';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);
     ctx.beginPath();ctx.moveTo(pt.x,top);ctx.lineTo(pt.x,bottom);ctx.stroke();ctx.setLineDash([]);
-    ctx.font='600 9px system-ui';ctx.fillStyle='#b07828';ctx.textAlign='center';
-    ctx.fillText(a.label,pt.x,top-4);ctx.restore();
+    ctx.font='600 8px system-ui';ctx.fillStyle='#b07828';ctx.textAlign='center';
+    const yOff=a.offsetY||0;ctx.fillText(a.label,pt.x,top-4+yOff);ctx.restore();
   });
 }};
 Chart.register(annotPlugin);
@@ -343,7 +342,7 @@ window.addEventListener('load',()=>{
       {label:'Egresos',data:EGR,borderColor:'#c0392b',backgroundColor:'#c0392b28',fill:true,tension:.3,pointRadius:3,borderWidth:2}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      _annot:[{index:1,label:'Inicio cuotas bacheo'},{index:3,label:'Inicio exp. extra SUM'}],
+      _annot:[{index:1,label:'Inicio bacheo',offsetY:-10},{index:3,label:'Inicio exp. extra SUM'}],
       layout:{padding:{top:16}},
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': $'+(c.raw/1e6).toFixed(1)+'M'}}},
       scales:{y:{ticks:{callback:v=>'$'+(v/1e6).toFixed(0)+'M',font:{size:9}},grid:{color:'#f0f0f0'}},
